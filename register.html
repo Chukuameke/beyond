@@ -1,14 +1,170 @@
-  <!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>register</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Beyond the Idea 2026 | Registration Form</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="register.css">
 </head>
 <body>
-    
+<main class="reg">
+
+  <header class="reg-head">
+    <span class="reg-badge">BEYOND THE IDEA 2026</span>
+    <h1>Registration Form</h1>
+  </header>
+
+  <form class="reg-form" action="#" method="post">
+
+    <!-- 1 -->
+    <section class="rcard">
+      <div class="rcard-head">
+        <span class="rcard-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></span>
+        <h2>1. Personal Information</h2>
+      </div>
+      <div class="grid">
+        <div class="field full"><label for="name">Full Name <b>*</b></label><input id="name" name="full_name" type="text" required></div>
+        <div class="field"><label for="email">Email Address <b>*</b></label><input id="email" name="email" type="email" required></div>
+        <div class="field"><label for="phone">Phone / WhatsApp Number <b>*</b></label><input id="phone" name="phone" type="tel" required></div>
+        <div class="field"><label for="country">Country <b>*</b></label><input id="country" name="country" type="text" required></div>
+        <div class="field"><label for="city">State / City</label><input id="city" name="state_city" type="text"></div>
+      </div>
+    </section>
+
+    <!-- 2 -->
+    <section class="rcard">
+      <div class="rcard-head">
+        <span class="rcard-icon"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></svg></span>
+        <h2>2. Professional / Entrepreneurial Profile</h2>
+      </div>
+      <div class="grid">
+        <div class="field full">
+          <label for="describe">What best describes you?</label>
+          <select id="describe" name="describes_you">
+            <option value="">Please Select</option>
+            <option>Student</option><option>Aspiring Entrepreneur</option><option>Entrepreneur</option>
+            <option>Startup Founder</option><option>Business Owner</option><option>CEO / Executive</option>
+            <option>Techpreneur</option><option>Developer / Software Engineer</option><option>Product Builder</option>
+            <option>Innovator</option><option>Creative</option><option>Professional</option>
+            <option>Investor</option><option>Freelancer</option><option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="org">Business / Organization Name</label>
+          <small>Optional for people who don't currently have a business.</small>
+          <input id="org" name="organization" type="text">
+        </div>
+        <div class="field">
+          <label for="industry">Industry / Area</label>
+          <select id="industry" name="industry">
+            <option value="">Please Select</option>
+            <option>Technology</option><option>Finance / Fintech</option><option>Food &amp; Agriculture</option>
+            <option>Fashion</option><option>Education</option><option>Health</option>
+            <option>Logistics / Transportation</option><option>Media &amp; Creative</option><option>E-commerce</option>
+            <option>Professional Services</option><option>Manufacturing</option><option>Real Estate</option><option>Other</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 -->
+    <section class="rcard">
+      <div class="rcard-head">
+        <span class="rcard-icon"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span>
+        <h2>3. Your Current Stage</h2>
+      </div>
+      <div class="field">
+        <label for="stage">Which best describes where you are currently?</label>
+        <select id="stage" name="stage">
+          <option value="">Please Select</option>
+          <option>I only have an idea</option><option>I am validating an idea</option>
+          <option>I am building an MVP/product</option><option>I have started the business</option>
+          <option>I have my first customers</option><option>I am generating revenue</option>
+          <option>I am trying to grow the business</option><option>I am scaling an existing business</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- 4 -->
+    <section class="rcard">
+      <div class="rcard-head">
+        <span class="rcard-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>
+        <h2>4. Build Room Selection</h2>
+      </div>
+      <fieldset class="field">
+        <legend>Which Build Room would you like to join?</legend>
+        <small>Participants should select one primary room.</small>
+        <div class="rooms">
+          <label class="room"><input type="radio" name="build_room" value="Validation Room"><span class="room-n">1</span><span><strong>THE VALIDATION ROOM</strong><em>From Idea to Validated Solution</em></span></label>
+          <label class="room"><input type="radio" name="build_room" value="Business Room"><span class="room-n">2</span><span><strong>THE BUSINESS ROOM</strong><em>Building the Business Foundation</em></span></label>
+          <label class="room"><input type="radio" name="build_room" value="Brand Room"><span class="room-n">3</span><span><strong>THE BRAND ROOM</strong><em>Building a Brand People Remember</em></span></label>
+          <label class="room"><input type="radio" name="build_room" value="Tech Room"><span class="room-n">4</span><span><strong>THE TECH ROOM</strong><em>Technology, AI &amp; Product Building</em></span></label>
+          <label class="room"><input type="radio" name="build_room" value="Growth Room"><span class="room-n">5</span><span><strong>THE GROWTH ROOM</strong><em>Money, Market &amp; Growth</em></span></label>
+          <label class="room"><input type="radio" name="build_room" value="Sales Room"><span class="room-n">6</span><span><strong>SALES ROOM</strong></span></label>
+        </div>
+      </fieldset>
+    </section>
+
+    <!-- 5 -->
+    <section class="rcard">
+      <div class="rcard-head">
+        <span class="rcard-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></span>
+        <h2>5. What Do You Want From The Conference?</h2>
+      </div>
+      <div class="grid">
+        <fieldset class="field full">
+          <legend>What are you hoping to gain from Beyond the Idea?</legend>
+          <div class="checks">
+            <label class="check"><input type="checkbox" name="gain" value="Turn idea into business">Learn how to turn my idea into a business</label>
+            <label class="check"><input type="checkbox" name="gain" value="Validate idea">Validate my business idea</label>
+            <label class="check"><input type="checkbox" name="gain" value="Build brand">Learn how to build a strong brand</label>
+            <label class="check"><input type="checkbox" name="gain" value="Technology and AI">Learn about technology and AI</label>
+            <label class="check"><input type="checkbox" name="gain" value="Find customers">Find customers</label>
+            <label class="check"><input type="checkbox" name="gain" value="Grow business">Learn how to grow my business</label>
+            <label class="check"><input type="checkbox" name="gain" value="Funding">Learn about funding and investment</label>
+            <label class="check"><input type="checkbox" name="gain" value="Meet founders">Meet founders and entrepreneurs</label>
+            <label class="check"><input type="checkbox" name="gain" value="Partners">Find potential partners</label>
+            <label class="check"><input type="checkbox" name="gain" value="Communities">Connect with communities</label>
+            <label class="check"><input type="checkbox" name="gain" value="Mentors">Find mentors / experts</label>
+            <label class="check"><input type="checkbox" name="gain" value="Opportunities">Discover business opportunities</label>
+            <label class="check"><input type="checkbox" name="gain" value="Business support">Access business support</label>
+            <label class="check"><input type="checkbox" name="gain" value="Other">Other</label>
+          </div>
+        </fieldset>
+        <div class="field full">
+          <label for="challenge">What is the biggest challenge you are currently facing?</label>
+          <select id="challenge" name="challenge">
+            <option value="">Please Select</option>
+            <option>I don't know where to start</option><option>Validating my idea</option><option>Funding</option>
+            <option>Business registration / structure</option><option>Branding</option>
+            <option>Technology / product development</option><option>Finding customers</option>
+            <option>Marketing / visibility</option><option>Sales</option><option>Building a team</option>
+            <option>Business management</option><option>Scaling</option><option>Partnerships</option><option>Other</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 -->
+    <section class="rcard">
+      <div class="rcard-head">
+        <span class="rcard-icon"><svg viewBox="0 0 24 24"><path d="M3 11v3a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M15 9a4 4 0 0 1 0 6M18 6.5a8 8 0 0 1 0 11"/></svg></span>
+        <h2>6. How Did You Hear About Us?</h2>
+      </div>
+      <div class="field">
+        <label for="source">How did you hear about Beyond the Idea?</label>
+        <select id="source" name="heard_from">
+          <option value="">Please Select</option>
+          <option>Instagram</option><option>Facebook</option><option>LinkedIn</option><option>X</option>
+          <option>TikTok</option><option>WhatsApp</option><option>YouTube</option><option>Other</option>
+        </select>
+      </div>
+    </section>
+
+    <button type="submit" class="reg-submit">Submit <span aria-hidden="true">&rarr;</span></button>
+  </form>
+</main>
 </body>
 </html>
