@@ -1115,31 +1115,45 @@ footer {
   min-height: 580px;
   display: flex;
   align-items: center;
-  background-image: url("./img//stage.png");
   background-size: cover;
   background-position: center;
   color: #ffffff;
 }
+
 /* ===== BTI ABOUT HERO: scroll parallax (image layer only, design unchanged) ===== */
 .bti-about-hero {
-  overflow: hidden;                 /* image stays clipped inside the section */
+  overflow: hidden;
+  /* image stays clipped inside the section */
   isolation: isolate;
-  background-image: none;           /* the same image now lives on the moving layer below */
+  background-image: none;
+  /* the same image now lives on the moving layer below */
 }
+
 .bti-about-hero::before {
   content: "";
-  position: absolute; z-index: 0;
-  left: 0; right: 0;
-  top: -14%; bottom: -14%;          /* extra height gives the image room to travel */
-  background-image: url("./img//stage.png");   /* same image as before */
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  right: 0;
+  top: -14%;
+  bottom: -14%;
+  /* extra height gives the image room to travel */
+  background-image: url("./img//stage.png");
+  /* same image as before */
   background-size: cover;
   background-position: center;
   transform: translate3d(0, var(--bti-shift, 0px), 0);
   will-change: transform;
 }
+
 @media (prefers-reduced-motion: reduce) {
-  .bti-about-hero::before { transform: none; top: 0; bottom: 0; }
+  .bti-about-hero::before {
+    transform: none;
+    top: 0;
+    bottom: 0;
+  }
 }
+
 .bti-hero-overlay {
   position: absolute;
   inset: 0;
@@ -1803,4 +1817,222 @@ footer {
   font-size: clamp(.9rem, 1.35vw, 1.05rem);
   font-weight: 500;
   line-height: 1.6;
+}
+/* ---------- SPONSORS & PARTNERS ---------- */
+
+.sponsors {
+  width: 100%;
+  padding: clamp(56px, 8vw, 96px) var(--gutter);
+  text-align: center;
+}
+
+.sp-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: clamp(10px, 1.4vw, 18px);
+
+  color: #5d4f66;
+  font-size: clamp(0.68rem, 1vw, 0.82rem);
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.sp-label::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  flex: 0 0 8px;
+  background: var(--green);
+}
+
+.sp-heading {
+  color: var(--ink);
+
+  font-size: clamp(1.7rem, 5.4vw, 4.2rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.sp-lead {
+  max-width: 54ch;
+  margin: clamp(12px, 1.6vw, 20px) auto clamp(32px, 5vw, 60px);
+
+  color: #6b6b6b;
+  font-size: clamp(0.95rem, 1.6vw, 1.2rem);
+  line-height: 1.6;
+}
+
+
+/* ---------- LOGO GRID ---------- */
+
+.sp-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(12px, 1.5vw, 20px);
+
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+
+/* ---------- LOGO CARD ---------- */
+
+.plogo {
+  min-width: 0;
+  min-height: clamp(90px, 9vw, 120px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: clamp(18px, 2vw, 28px);
+
+  background: #ffffff;
+  border: 1px solid rgba(20, 20, 20, 0.07);
+  border-radius: 10px;
+
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.04),
+    0 8px 24px rgba(0, 0, 0, 0.035);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.plogo:hover {
+  transform: translateY(-3px);
+
+  border-color: rgba(20, 20, 20, 0.12);
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.06),
+    0 12px 28px rgba(0, 0, 0, 0.06);
+}
+
+.plogo img {
+  display: block;
+
+  width: min(130px, 80%);
+  height: clamp(38px, 4.5vw, 55px);
+
+  object-fit: contain;
+}
+
+
+/* ---------- BUTTONS ---------- */
+
+.sp-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: clamp(12px, 1.5vw, 20px);
+
+  margin-top: clamp(32px, 5vw, 56px);
+}
+
+.sp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(8px, 1vw, 14px);
+
+  min-height: 48px;
+
+  padding:
+    clamp(12px, 1.5vw, 18px)
+    clamp(20px, 2.6vw, 34px);
+
+  border: 1px solid var(--purple);
+  border-radius: 6px;
+
+  background: transparent;
+  color: var(--purple);
+
+  font-size: clamp(0.72rem, 1.2vw, 0.9rem);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.sp-btn:hover {
+  background: var(--purple);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.sp-btn-primary {
+  background: var(--purple);
+  color: var(--white);
+}
+
+.sp-btn-primary:hover {
+  background: var(--purple-deep);
+  color: var(--white);
+}
+
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 900px) {
+
+  .sp-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .sp-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .plogo {
+    min-height: 90px;
+    padding: 16px;
+  }
+
+  .plogo img {
+    width: min(110px, 82%);
+    height: 45px;
+  }
+
+  .sp-actions {
+    flex-direction: column;
+  }
+
+  .sp-btn {
+    width: min(100%, 320px);
+  }
+
+}
+
+
+@media (max-width: 380px) {
+
+  .sp-grid {
+    gap: 10px;
+  }
+
+  .plogo {
+    min-height: 80px;
+    padding: 12px;
+  }
+
 }
