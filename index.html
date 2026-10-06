@@ -86,38 +86,38 @@
 
     <section class="bti-about-hero">
       <div class="bti-hero-overlay"></div>
-  
+
       <div class="bti-container bti-hero-content">
-  
+
         <span class="bti-eyebrow">ABOUT BEYOND THE IDEA</span>
-  
+
         <h1>
           Where ideas find<br />
           their way forward.
         </h1>
-  
+
         <p>
           Beyond the Idea brings together entrepreneurs, founders,
           innovators, creators, techpreneurs, and aspiring builders
           to discover, build, connect, grow, and turn ideas into
           something real.
         </p>
-  
+
         <div class="bti-hero-buttons">
           <a href="#registration" class="bti-btn bti-btn-primary">
             Register Now
             <span>→</span>
           </a>
-  
+
           <a href="#programme" class="bti-btn bti-btn-outline">
             Explore Programme
           </a>
         </div>
-  
+
       </div>
     </section>
 
-    <section class="bti-section bti-white-section bti-journey-section">
+    <!-- <section class="bti-section bti-white-section bti-journey-section">
       
       <div class="bti-container">
   
@@ -213,11 +213,11 @@
   
       </div>
   
-    </section>
-  
-  
+    </section> -->
 
-    <!-- <section class="platform" id="platform">
+
+
+    <section class="platform" id="platform">
       <div class="platform-left">
         <h2>One conversation.<br><span>ONE PLATFORM.</span></h2>
         <p>We create conversations, learning experiences and connections that help people move from thinking to building
@@ -225,7 +225,7 @@
           accessing opportunities and creating meaningful impact.</p>
 
 
-     
+
         <img class="platform-img" src="https://assets.mixkit.co/videos/13192/13192-thumb-720-3.jpg"
           alt="Attendees at a business conference">
       </div>
@@ -257,7 +257,7 @@
             opportunities.</p>
         </article>
       </div>
-    </section> -->
+    </section>
 
 
 
@@ -313,61 +313,61 @@
           </div>
         </article>
       </div>
-     <a href="#"> <button class="view-speakers">View all speakers</button></a>
+      <a href="#"> <button class="view-speakers">View all speakers</button></a>
     </section>
 
-    
+
 
     <!-- =========================================
              ORGANIZER SECTION
         ========================================== -->
-        <section class="bti-organizer-section">
-      
-          <div class="bti-container">
-      
-            <div class="bti-organizer-grid">
-      
-              <div class="bti-organizer-content">
-      
-                <p class="spk-label">ORGANIZER</p>
-      
-                <h2>ComeCode Business</h2>
-      
-                <p>
-                  ComeCode Business is building an ecosystem where ideas
-                  can move from possibility to execution, enterprise, and
-                  lasting impact.
-                </p>
-      
-                <p>
-                  Through Beyond the Idea, ComeCode Business brings
-                  entrepreneurs, innovators, founders, communities,
-                  businesses, and opportunity partners together around one
-                  shared goal:
-                </p>
-      
-                <strong class="bti-organizer-highlight">
-                  Ideas come to life.
-                </strong>
-      
-              </div>
-      
-      
-              <div class="bti-organizer-logo-box">
-      
-                <!-- Replace this with the actual ComeCode Business logo -->
-                <div class="bti-logo-placeholder">
-                  <span>COMECODE</span>
-                  <small>BUSINESS</small>
-                </div>
-      
-              </div>
-      
-            </div>
-      
+    <section class="bti-organizer-section">
+
+      <div class="bti-container">
+
+        <div class="bti-organizer-grid">
+
+          <div class="bti-organizer-content">
+
+            <p class="spk-label">ORGANIZER</p>
+
+            <h2>ComeCode Business</h2>
+
+            <p>
+              ComeCode Business is building an ecosystem where ideas
+              can move from possibility to execution, enterprise, and
+              lasting impact.
+            </p>
+
+            <p>
+              Through Beyond the Idea, ComeCode Business brings
+              entrepreneurs, innovators, founders, communities,
+              businesses, and opportunity partners together around one
+              shared goal:
+            </p>
+
+            <strong class="bti-organizer-highlight">
+              Ideas come to life.
+            </strong>
+
           </div>
-      
-        </section>
+
+
+          <div class="bti-organizer-logo-box">
+
+            <!-- Replace this with the actual ComeCode Business logo -->
+            <div class="bti-logo-placeholder">
+              <span>COMECODE</span>
+              <small>BUSINESS</small>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
   </main>
 
   <footer class="conference-footer">
@@ -379,7 +379,7 @@
         <!-- Brand -->
         <div class="footer-brand">
           <div class="brand-row">
-         <img src="./img/logo.PNG" alt="">
+            <img src="./img/logo.PNG" alt="">
 
           </div>
         </div>
@@ -510,6 +510,25 @@
     }
     tick();
     setInterval(tick, 1000);
+
+    // Parallax for the "About Beyond the Idea" image section
+    const btiHero = document.querySelector('.bti-about-hero');
+    let btiTicking = false;
+    function btiParallax() {
+      const r = btiHero.getBoundingClientRect();
+      const vh = window.innerHeight;
+      if (r.bottom > 0 && r.top < vh) {
+        const progress = (vh - r.top) / (vh + r.height);          // 0 when entering, 1 when leaving
+        const shift = (progress - 0.5) * 2 * (r.height * 0.12);   // travel stays inside the 14% overhang
+        btiHero.style.setProperty('--bti-shift', shift.toFixed(1) + 'px');
+      }
+      btiTicking = false;
+    }
+    window.addEventListener('scroll', () => {
+      if (!btiTicking) { requestAnimationFrame(btiParallax); btiTicking = true; }
+    }, { passive: true });
+    window.addEventListener('resize', btiParallax);
+    btiParallax();
   </script>
 </body>
 

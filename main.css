@@ -1120,7 +1120,26 @@ footer {
   background-position: center;
   color: #ffffff;
 }
-
+/* ===== BTI ABOUT HERO: scroll parallax (image layer only, design unchanged) ===== */
+.bti-about-hero {
+  overflow: hidden;                 /* image stays clipped inside the section */
+  isolation: isolate;
+  background-image: none;           /* the same image now lives on the moving layer below */
+}
+.bti-about-hero::before {
+  content: "";
+  position: absolute; z-index: 0;
+  left: 0; right: 0;
+  top: -14%; bottom: -14%;          /* extra height gives the image room to travel */
+  background-image: url("./img//stage.png");   /* same image as before */
+  background-size: cover;
+  background-position: center;
+  transform: translate3d(0, var(--bti-shift, 0px), 0);
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bti-about-hero::before { transform: none; top: 0; bottom: 0; }
+}
 .bti-hero-overlay {
   position: absolute;
   inset: 0;
