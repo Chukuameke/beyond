@@ -5,25 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Beyond the Idea 2026 | Registration Form</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="register.css">
 </head>
 <body>
+
+<!-- ========== HERO (replace the image URL in register.css: --hero-img) ========== -->
+<header class="reg-hero">
+  <div class="reg-hero-bg" aria-hidden="true"></div>
+  <div class="reg-hero-inner">
+    <p class="reg-date">DECEMBER 2026</p>
+    <h1>CONFERENCE REGISTRATION</h1>
+    <p class="reg-sub">IDEAS COME TO LIFE</p>
+  </div>
+</header>
+
+<!-- scrolling strip -->
+<div class="reg-marquee" aria-hidden="true">
+  <div class="track">
+    <span>* Discover</span><span>* Learn</span><span>* Connect</span><span>* Build</span><span>* Grow</span><span>* Impact</span>
+    <span>* Discover</span><span>* Learn</span><span>* Connect</span><span>* Build</span><span>* Grow</span><span>* Impact</span>
+    <span>* Discover</span><span>* Learn</span><span>* Connect</span><span>* Build</span><span>* Grow</span><span>* Impact</span>
+    <span>* Discover</span><span>* Learn</span><span>* Connect</span><span>* Build</span><span>* Grow</span><span>* Impact</span>
+  </div>
+</div>
+
 <main class="reg">
 
-  <header class="reg-head">
-    <span class="reg-badge">BEYOND THE IDEA 2026</span>
-    <h1>Registration Form</h1>
-  </header>
+  <!-- progress -->
+  <ol class="reg-progress" id="progress">
+    <li class="is-active"><b>1</b><span>Personal Information</span></li>
+    <li><b>2</b><span>Professional Profile</span></li>
+    <li><b>3</b><span>Conference</span></li>
+  </ol>
 
-  <form class="reg-form" action="#" method="post">
+  <form class="reg-form" id="regForm" action="#" method="post">
 
-    <!-- 1 -->
-    <section class="rcard">
-      <div class="rcard-head">
-        <span class="rcard-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></span>
-        <h2>1. Personal Information</h2>
-      </div>
+    <!-- ========== STEP 1 ========== -->
+    <fieldset class="step" data-step="1">
+      <h2 class="step-title">1. Personal Information</h2>
       <div class="grid">
         <div class="field full"><label for="name">Full Name <b>*</b></label><input id="name" name="full_name" type="text" required></div>
         <div class="field"><label for="email">Email Address <b>*</b></label><input id="email" name="email" type="email" required></div>
@@ -31,14 +51,11 @@
         <div class="field"><label for="country">Country <b>*</b></label><input id="country" name="country" type="text" required></div>
         <div class="field"><label for="city">State / City</label><input id="city" name="state_city" type="text"></div>
       </div>
-    </section>
+    </fieldset>
 
-    <!-- 2 -->
-    <section class="rcard">
-      <div class="rcard-head">
-        <span class="rcard-icon"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></svg></span>
-        <h2>2. Professional / Entrepreneurial Profile</h2>
-      </div>
+    <!-- ========== STEP 2 ========== -->
+    <fieldset class="step" data-step="2" hidden>
+      <h2 class="step-title">2. Professional / Entrepreneurial Profile</h2>
       <div class="grid">
         <div class="field full">
           <label for="describe">What best describes you?</label>
@@ -67,14 +84,8 @@
           </select>
         </div>
       </div>
-    </section>
 
-    <!-- 3 -->
-    <section class="rcard">
-      <div class="rcard-head">
-        <span class="rcard-icon"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span>
-        <h2>3. Your Current Stage</h2>
-      </div>
+      <h2 class="step-title step-title--sub">3. Your Current Stage</h2>
       <div class="field">
         <label for="stage">Which best describes where you are currently?</label>
         <select id="stage" name="stage">
@@ -85,16 +96,13 @@
           <option>I am trying to grow the business</option><option>I am scaling an existing business</option>
         </select>
       </div>
-    </section>
+    </fieldset>
 
-    <!-- 4 -->
-    <section class="rcard">
-      <div class="rcard-head">
-        <span class="rcard-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>
-        <h2>4. Build Room Selection</h2>
-      </div>
-      <fieldset class="field">
-        <legend>Which Build Room would you like to join?</legend>
+    <!-- ========== STEP 3 ========== -->
+    <fieldset class="step" data-step="3" hidden>
+      <h2 class="step-title">4. Build Room Selection</h2>
+      <div class="field">
+        <label>Which Build Room would you like to join?</label>
         <small>Participants should select one primary room.</small>
         <div class="rooms">
           <label class="room"><input type="radio" name="build_room" value="Validation Room"><span class="room-n">1</span><span><strong>THE VALIDATION ROOM</strong><em>From Idea to Validated Solution</em></span></label>
@@ -104,55 +112,41 @@
           <label class="room"><input type="radio" name="build_room" value="Growth Room"><span class="room-n">5</span><span><strong>THE GROWTH ROOM</strong><em>Money, Market &amp; Growth</em></span></label>
           <label class="room"><input type="radio" name="build_room" value="Sales Room"><span class="room-n">6</span><span><strong>SALES ROOM</strong></span></label>
         </div>
-      </fieldset>
-    </section>
-
-    <!-- 5 -->
-    <section class="rcard">
-      <div class="rcard-head">
-        <span class="rcard-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></span>
-        <h2>5. What Do You Want From The Conference?</h2>
       </div>
-      <div class="grid">
-        <fieldset class="field full">
-          <legend>What are you hoping to gain from Beyond the Idea?</legend>
-          <div class="checks">
-            <label class="check"><input type="checkbox" name="gain" value="Turn idea into business">Learn how to turn my idea into a business</label>
-            <label class="check"><input type="checkbox" name="gain" value="Validate idea">Validate my business idea</label>
-            <label class="check"><input type="checkbox" name="gain" value="Build brand">Learn how to build a strong brand</label>
-            <label class="check"><input type="checkbox" name="gain" value="Technology and AI">Learn about technology and AI</label>
-            <label class="check"><input type="checkbox" name="gain" value="Find customers">Find customers</label>
-            <label class="check"><input type="checkbox" name="gain" value="Grow business">Learn how to grow my business</label>
-            <label class="check"><input type="checkbox" name="gain" value="Funding">Learn about funding and investment</label>
-            <label class="check"><input type="checkbox" name="gain" value="Meet founders">Meet founders and entrepreneurs</label>
-            <label class="check"><input type="checkbox" name="gain" value="Partners">Find potential partners</label>
-            <label class="check"><input type="checkbox" name="gain" value="Communities">Connect with communities</label>
-            <label class="check"><input type="checkbox" name="gain" value="Mentors">Find mentors / experts</label>
-            <label class="check"><input type="checkbox" name="gain" value="Opportunities">Discover business opportunities</label>
-            <label class="check"><input type="checkbox" name="gain" value="Business support">Access business support</label>
-            <label class="check"><input type="checkbox" name="gain" value="Other">Other</label>
-          </div>
-        </fieldset>
-        <div class="field full">
-          <label for="challenge">What is the biggest challenge you are currently facing?</label>
-          <select id="challenge" name="challenge">
-            <option value="">Please Select</option>
-            <option>I don't know where to start</option><option>Validating my idea</option><option>Funding</option>
-            <option>Business registration / structure</option><option>Branding</option>
-            <option>Technology / product development</option><option>Finding customers</option>
-            <option>Marketing / visibility</option><option>Sales</option><option>Building a team</option>
-            <option>Business management</option><option>Scaling</option><option>Partnerships</option><option>Other</option>
-          </select>
+
+      <h2 class="step-title step-title--sub">5. What Do You Want From The Conference?</h2>
+      <div class="field">
+        <label>What are you hoping to gain from Beyond the Idea?</label>
+        <div class="checks">
+          <label class="check"><input type="checkbox" name="gain" value="Turn idea into business">Learn how to turn my idea into a business</label>
+          <label class="check"><input type="checkbox" name="gain" value="Validate idea">Validate my business idea</label>
+          <label class="check"><input type="checkbox" name="gain" value="Build brand">Learn how to build a strong brand</label>
+          <label class="check"><input type="checkbox" name="gain" value="Technology and AI">Learn about technology and AI</label>
+          <label class="check"><input type="checkbox" name="gain" value="Find customers">Find customers</label>
+          <label class="check"><input type="checkbox" name="gain" value="Grow business">Learn how to grow my business</label>
+          <label class="check"><input type="checkbox" name="gain" value="Funding">Learn about funding and investment</label>
+          <label class="check"><input type="checkbox" name="gain" value="Meet founders">Meet founders and entrepreneurs</label>
+          <label class="check"><input type="checkbox" name="gain" value="Partners">Find potential partners</label>
+          <label class="check"><input type="checkbox" name="gain" value="Communities">Connect with communities</label>
+          <label class="check"><input type="checkbox" name="gain" value="Mentors">Find mentors / experts</label>
+          <label class="check"><input type="checkbox" name="gain" value="Opportunities">Discover business opportunities</label>
+          <label class="check"><input type="checkbox" name="gain" value="Business support">Access business support</label>
+          <label class="check"><input type="checkbox" name="gain" value="Other">Other</label>
         </div>
       </div>
-    </section>
-
-    <!-- 6 -->
-    <section class="rcard">
-      <div class="rcard-head">
-        <span class="rcard-icon"><svg viewBox="0 0 24 24"><path d="M3 11v3a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M15 9a4 4 0 0 1 0 6M18 6.5a8 8 0 0 1 0 11"/></svg></span>
-        <h2>6. How Did You Hear About Us?</h2>
+      <div class="field">
+        <label for="challenge">What is the biggest challenge you are currently facing?</label>
+        <select id="challenge" name="challenge">
+          <option value="">Please Select</option>
+          <option>I don't know where to start</option><option>Validating my idea</option><option>Funding</option>
+          <option>Business registration / structure</option><option>Branding</option>
+          <option>Technology / product development</option><option>Finding customers</option>
+          <option>Marketing / visibility</option><option>Sales</option><option>Building a team</option>
+          <option>Business management</option><option>Scaling</option><option>Partnerships</option><option>Other</option>
+        </select>
       </div>
+
+      <h2 class="step-title step-title--sub">6. How Did You Hear About Us?</h2>
       <div class="field">
         <label for="source">How did you hear about Beyond the Idea?</label>
         <select id="source" name="heard_from">
@@ -161,10 +155,50 @@
           <option>TikTok</option><option>WhatsApp</option><option>YouTube</option><option>Other</option>
         </select>
       </div>
-    </section>
+    </fieldset>
 
-    <button type="submit" class="reg-submit">Submit <span aria-hidden="true">&rarr;</span></button>
+    <!-- buttons -->
+    <div class="reg-actions">
+      <button type="button" class="btn btn-back" id="btnBack" hidden>&larr; Back</button>
+      <button type="button" class="btn btn-next" id="btnNext">Next <span aria-hidden="true">&rarr;</span></button>
+      <button type="submit" class="btn btn-next" id="btnSubmit" hidden>Submit <span aria-hidden="true">&rarr;</span></button>
+    </div>
   </form>
 </main>
+
+<script>
+  const form = document.getElementById('regForm');
+  const steps = [...form.querySelectorAll('.step')];
+  const dots = [...document.querySelectorAll('#progress li')];
+  const btnBack = document.getElementById('btnBack');
+  const btnNext = document.getElementById('btnNext');
+  const btnSubmit = document.getElementById('btnSubmit');
+  let cur = 0;
+
+  function show(n) {
+    cur = n;
+    steps.forEach((s, k) => s.hidden = k !== n);
+    dots.forEach((d, k) => {
+      d.classList.toggle('is-active', k === n);
+      d.classList.toggle('is-done', k < n);
+    });
+    btnBack.hidden = n === 0;
+    btnNext.hidden = n === steps.length - 1;
+    btnSubmit.hidden = n !== steps.length - 1;
+    document.getElementById('progress').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function next() {
+    // the current step must be valid before moving on
+    const fields = [...steps[cur].querySelectorAll('input, select')];
+    for (const f of fields) { if (!f.checkValidity()) { f.reportValidity(); return; } }
+    if (cur < steps.length - 1) show(cur + 1);
+  }
+
+  btnNext.addEventListener('click', next);
+  btnBack.addEventListener('click', () => show(cur - 1));
+  // pressing Enter on steps 1-2 goes to the next step instead of submitting
+  form.addEventListener('submit', e => { if (cur < steps.length - 1) { e.preventDefault(); next(); } });
+</script>
 </body>
 </html>
