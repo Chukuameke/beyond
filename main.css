@@ -839,7 +839,7 @@ footer {
   gap: clamp(8px, 1vw, 14px);
   margin-top: 8px;
   white-space: nowrap;
-  background:var(--green);
+  background: var(--green);
   color: var(--white);
   font-weight: 600;
   letter-spacing: .02em;
@@ -1225,8 +1225,8 @@ footer {
 }
 
 .bti-btn-primary {
-  background:var(--card-green);
-  color:var(--white);
+  background: var(--card-green);
+  color: var(--white);
 }
 
 .bti-btn-outline {
@@ -1776,7 +1776,6 @@ footer {
 }
 
 /* violet */
-
 .bti-journey-number {
   display: none;
 }
@@ -1819,8 +1818,8 @@ footer {
   font-weight: 500;
   line-height: 1.6;
 }
-/* ---------- SPONSORS & PARTNERS ---------- */
 
+/* ---------- SPONSORS & PARTNERS ---------- */
 .sponsors {
   width: 100%;
   padding: clamp(56px, 8vw, 96px) var(--gutter);
@@ -1832,7 +1831,6 @@ footer {
   align-items: center;
   gap: 12px;
   margin-bottom: clamp(10px, 1.4vw, 18px);
-
   color: #5d4f66;
   font-size: clamp(0.68rem, 1vw, 0.82rem);
   font-weight: 800;
@@ -1849,7 +1847,6 @@ footer {
 
 .sp-heading {
   color: var(--ink);
-
   font-size: clamp(1.7rem, 5.4vw, 4.2rem);
   font-weight: 800;
   line-height: 1.08;
@@ -1861,82 +1858,56 @@ footer {
 .sp-lead {
   max-width: 54ch;
   margin: clamp(12px, 1.6vw, 20px) auto clamp(32px, 5vw, 60px);
-
   color: #6b6b6b;
   font-size: clamp(0.95rem, 1.6vw, 1.2rem);
   line-height: 1.6;
 }
 
-
-/* ---------- LOGO GRID ---------- */
-
+/* logo grid */
 .sp-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(12px, 1.5vw, 20px);
-
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
 }
 
-
-/* ---------- LOGO CARD ---------- */
-
+/* logo card */
 .plogo {
   min-width: 0;
   min-height: clamp(90px, 9vw, 120px);
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   padding: clamp(18px, 2vw, 28px);
-
   background: #ffffff;
   border: 1px solid rgba(20, 20, 20, 0.07);
   border-radius: 10px;
-
-  box-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.04),
-    0 8px 24px rgba(0, 0, 0, 0.035);
-
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    border-color 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.035);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .plogo:hover {
   transform: translateY(-3px);
-
   border-color: rgba(20, 20, 20, 0.12);
-
-  box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.06),
-    0 12px 28px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 12px 28px rgba(0, 0, 0, 0.06);
 }
 
 .plogo img {
   display: block;
-
   width: min(130px, 80%);
   height: clamp(38px, 4.5vw, 55px);
-
   object-fit: contain;
 }
 
-
-/* ---------- BUTTONS ---------- */
-
+/* buttons */
 .sp-actions {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-
   gap: clamp(12px, 1.5vw, 20px);
-
   margin-top: clamp(32px, 5vw, 56px);
 }
 
@@ -1945,28 +1916,17 @@ footer {
   align-items: center;
   justify-content: center;
   gap: clamp(8px, 1vw, 14px);
-
   min-height: 48px;
-
-  padding:
-    clamp(12px, 1.5vw, 18px)
-    clamp(20px, 2.6vw, 34px);
-
+  padding: clamp(12px, 1.5vw, 18px) clamp(20px, 2.6vw, 34px);
   border: 1px solid var(--purple);
   border-radius: 6px;
-
   background: transparent;
   color: var(--purple);
-
   font-size: clamp(0.72rem, 1.2vw, 0.9rem);
   font-weight: 800;
   letter-spacing: 0.1em;
   white-space: nowrap;
-
-  transition:
-    background 0.2s ease,
-    color 0.2s ease,
-    transform 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
 .sp-btn:hover {
@@ -1985,20 +1945,14 @@ footer {
   color: var(--white);
 }
 
-
-/* ---------- RESPONSIVE ---------- */
-
+/* sponsors responsive */
 @media (max-width: 900px) {
-
   .sp-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-
 }
 
-
 @media (max-width: 600px) {
-
   .sp-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
@@ -2021,12 +1975,9 @@ footer {
   .sp-btn {
     width: min(100%, 320px);
   }
-
 }
 
-
 @media (max-width: 380px) {
-
   .sp-grid {
     gap: 10px;
   }
@@ -2035,5 +1986,48 @@ footer {
     min-height: 80px;
     padding: 12px;
   }
+}
 
+/* ===== FOOTER: YouTube button + alignment (NEW) ===== */
+.footer-yt {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  min-height: clamp(40px, 3.6vw, 44px);
+  padding: 0 clamp(16px, 2vw, 24px);
+  border-radius: 10px;
+  background: #e62117;
+  color: #fff;
+  font-size: clamp(.8rem, 1.1vw, .875rem);
+  font-weight: 600;
+  transition: background .2s, transform .2s;
+}
+
+.footer-yt svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  fill: currentColor;
+}
+
+.footer-yt:hover {
+  background: #c91b12;
+  transform: translateY(-2px);
+}
+
+/* desktop: the link columns now run from the logo's left edge to the button's right edge */
+@media (min-width: 901px) {
+  .footer-links {
+    grid-template-columns: repeat(5, auto);
+    justify-content: space-between;
+  }
+}
+
+/* phones: full-width button */
+@media (max-width: 560px) {
+  .footer-yt {
+    width: 100%;
+    justify-content: center;
+  }
 }

@@ -88,6 +88,7 @@
           <label class="opt"><input type="checkbox" name="describes_you" value="Techpreneur"><span>Techpreneur</span></label>
           <label class="opt"><input type="checkbox" name="describes_you" value="Creative"><span>Creative</span></label>
           <label class="opt"><input type="checkbox" name="describes_you" value="Other"><span>Other</span></label>
+          <input class="other-input" type="text" name="describes_you_other" placeholder="Type your answer (optional)" aria-label="Other, please specify (optional)" hidden>
         </div>
       </div>
 
@@ -108,6 +109,7 @@
           <label class="opt"><input type="checkbox" name="industry" value="Health"><span>Health</span></label>
           <label class="opt"><input type="checkbox" name="industry" value="E-commerce"><span>E-commerce</span></label>
           <label class="opt"><input type="checkbox" name="industry" value="Other"><span>Other</span></label>
+          <input class="other-input" type="text" name="industry_other" placeholder="Type your answer (optional)" aria-label="Other, please specify (optional)" hidden>
         </div>
       </div>
 
@@ -169,6 +171,7 @@
           <label class="opt"><input type="checkbox" name="challenge" value="Finding customers"><span>Finding customers</span></label>
           <label class="opt"><input type="checkbox" name="challenge" value="Building a team"><span>Building a team</span></label>
           <label class="opt"><input type="checkbox" name="challenge" value="Other"><span>Other</span></label>
+          <input class="other-input" type="text" name="challenge_other" placeholder="Type your answer (optional)" aria-label="Other, please specify (optional)" hidden>
         </div>
       </div>
 
@@ -184,6 +187,7 @@
           <label class="opt"><input type="checkbox" name="heard_from" value="WhatsApp"><span>WhatsApp</span></label>
           <label class="opt"><input type="checkbox" name="heard_from" value="YouTube"><span>YouTube</span></label>
           <label class="opt"><input type="checkbox" name="heard_from" value="Other"><span>Other</span></label>
+          <input class="other-input" type="text" name="heard_from_other" placeholder="Type your answer (optional)" aria-label="Other, please specify (optional)" hidden>
         </div>
       </div>
     </fieldset>
@@ -244,6 +248,16 @@
   btnNext.addEventListener('click', next);
   btnBack.addEventListener('click', () => show(cur - 1));
 
+  // "Other": show an optional text line when ticked
+  document.querySelectorAll('.opt input[value="Other"]').forEach(box => {
+    const line = box.closest('.opt').nextElementSibling;
+    if (!line || !line.classList.contains('other-input')) return;
+    box.addEventListener('change', () => {
+      line.hidden = !box.checked;
+      if (box.checked) line.focus(); else line.value = '';
+    });
+  });
+
   form.addEventListener('submit', async e => {
     e.preventDefault();
     if (cur < steps.length - 1) { next(); return; }   // Enter on steps 1-2 = Next
@@ -255,9 +269,15 @@
     const LISTS = ['describes_you', 'industry', 'stage', 'gain', 'challenge', 'heard_from'];
     const data = {};
     for (const [k, v] of new FormData(form).entries()) {
+      if (k.endsWith('_other')) continue;              // handled below
       if (LISTS.includes(k)) (data[k] = data[k] || []).push(v);
       else data[k] = v === '' ? null : v;
     }
+    // if someone typed their own answer, save it as "Other: ..."
+    LISTS.forEach(k => {
+      const typed = (form.elements[k + '_other']?.value || '').trim();
+      if (typed && data[k]) data[k] = data[k].map(v => v === 'Other' ? 'Other: ' + typed : v);
+    });
 
     try {
       const res = await fetch(SUPABASE_URL + '/rest/v1/' + TABLE, {
