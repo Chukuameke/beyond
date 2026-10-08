@@ -56,53 +56,62 @@
     <!-- ========== STEP 2 ========== -->
     <fieldset class="step" data-step="2" hidden>
       <h2 class="step-title">2. Professional / Entrepreneurial Profile</h2>
-      <div class="grid">
-        <div class="field full">
-          <label for="describe">What best describes you?</label>
-          <select id="describe" name="describes_you">
-            <option value="">Please Select</option>
-            <option>Student</option><option>Aspiring Entrepreneur</option><option>Entrepreneur</option>
-            <option>Startup Founder</option><option>Business Owner</option><option>CEO / Executive</option>
-            <option>Techpreneur</option><option>Developer / Software Engineer</option><option>Product Builder</option>
-            <option>Innovator</option><option>Creative</option><option>Professional</option>
-            <option>Investor</option><option>Freelancer</option><option>Other</option>
-          </select>
+
+      <div class="field" role="group" aria-labelledby="g-describe">
+        <p class="lbl" id="g-describe">What best describes you?</p>
+        <div class="opts">
+          <label class="opt"><input type="checkbox" name="describes_you" value="Student"><span>Student</span></label>
+          <label class="opt"><input type="checkbox" name="describes_you" value="Aspiring Entrepreneur"><span>Aspiring Entrepreneur</span></label>
+          <label class="opt"><input type="checkbox" name="describes_you" value="Entrepreneur"><span>Entrepreneur</span></label>
+          <label class="opt"><input type="checkbox" name="describes_you" value="Startup Founder"><span>Startup Founder</span></label>
+          <label class="opt"><input type="checkbox" name="describes_you" value="Business Owner"><span>Business Owner</span></label>
+          <label class="opt"><input type="checkbox" name="describes_you" value="Techpreneur"><span>Techpreneur</span></label>
+          <label class="opt"><input type="checkbox" name="describes_you" value="Creative"><span>Creative</span></label>
+          <label class="opt"><input type="checkbox" name="describes_you" value="Other"><span>Other</span></label>
         </div>
-        <div class="field">
-          <label for="org">Business / Organization Name</label>
-          <small>Optional for people who don't currently have a business.</small>
-          <input id="org" name="organization" type="text">
-        </div>
-        <div class="field">
-          <label for="industry">Industry / Area</label>
-          <select id="industry" name="industry">
-            <option value="">Please Select</option>
-            <option>Technology</option><option>Finance / Fintech</option><option>Food &amp; Agriculture</option>
-            <option>Fashion</option><option>Education</option><option>Health</option>
-            <option>Logistics / Transportation</option><option>Media &amp; Creative</option><option>E-commerce</option>
-            <option>Professional Services</option><option>Manufacturing</option><option>Real Estate</option><option>Other</option>
-          </select>
+      </div>
+
+      <div class="field">
+        <label for="org">Business / Organization Name</label>
+        <small>Optional for people who don't currently have a business.</small>
+        <input id="org" name="organization" type="text">
+      </div>
+
+      <div class="field" role="group" aria-labelledby="g-industry">
+        <p class="lbl" id="g-industry">Industry / Area</p>
+        <div class="opts">
+          <label class="opt"><input type="checkbox" name="industry" value="Technology"><span>Technology</span></label>
+          <label class="opt"><input type="checkbox" name="industry" value="Finance / Fintech"><span>Finance / Fintech</span></label>
+          <label class="opt"><input type="checkbox" name="industry" value="Food &amp; Agriculture"><span>Food &amp; Agriculture</span></label>
+          <label class="opt"><input type="checkbox" name="industry" value="Fashion"><span>Fashion</span></label>
+          <label class="opt"><input type="checkbox" name="industry" value="Education"><span>Education</span></label>
+          <label class="opt"><input type="checkbox" name="industry" value="Health"><span>Health</span></label>
+          <label class="opt"><input type="checkbox" name="industry" value="E-commerce"><span>E-commerce</span></label>
+          <label class="opt"><input type="checkbox" name="industry" value="Other"><span>Other</span></label>
         </div>
       </div>
 
       <h2 class="step-title step-title--sub">3. Your Current Stage</h2>
-      <div class="field">
-        <label for="stage">Which best describes where you are currently?</label>
-        <select id="stage" name="stage">
-          <option value="">Please Select</option>
-          <option>I only have an idea</option><option>I am validating an idea</option>
-          <option>I am building an MVP/product</option><option>I have started the business</option>
-          <option>I have my first customers</option><option>I am generating revenue</option>
-          <option>I am trying to grow the business</option><option>I am scaling an existing business</option>
-        </select>
+      <div class="field" role="group" aria-labelledby="g-stage">
+        <p class="lbl" id="g-stage">Which best describes where you are currently?</p>
+        <div class="opts">
+          <label class="opt"><input type="checkbox" name="stage" value="I only have an idea"><span>I only have an idea</span></label>
+          <label class="opt"><input type="checkbox" name="stage" value="I am validating an idea"><span>I am validating an idea</span></label>
+          <label class="opt"><input type="checkbox" name="stage" value="I am building an MVP/product"><span>I am building an MVP/product</span></label>
+          <label class="opt"><input type="checkbox" name="stage" value="I have started the business"><span>I have started the business</span></label>
+          <label class="opt"><input type="checkbox" name="stage" value="I have my first customers"><span>I have my first customers</span></label>
+          <label class="opt"><input type="checkbox" name="stage" value="I am generating revenue"><span>I am generating revenue</span></label>
+          <label class="opt"><input type="checkbox" name="stage" value="I am trying to grow the business"><span>I am trying to grow the business</span></label>
+          <label class="opt"><input type="checkbox" name="stage" value="I am scaling an existing business"><span>I am scaling an existing business</span></label>
+        </div>
       </div>
     </fieldset>
 
     <!-- ========== STEP 3 ========== -->
     <fieldset class="step" data-step="3" hidden>
       <h2 class="step-title">4. Build Room Selection</h2>
-      <div class="field">
-        <label>Which Build Room would you like to join?</label>
+      <div class="field" role="group" aria-labelledby="g-room">
+        <p class="lbl" id="g-room">Which Build Room would you like to join?</p>
         <small>Participants should select one primary room.</small>
         <div class="rooms">
           <label class="room"><input type="radio" name="build_room" value="Validation Room"><span class="room-n">1</span><span><strong>THE VALIDATION ROOM</strong><em>From Idea to Validated Solution</em></span></label>
@@ -115,45 +124,47 @@
       </div>
 
       <h2 class="step-title step-title--sub">5. What Do You Want From The Conference?</h2>
-      <div class="field">
-        <label>What are you hoping to gain from Beyond the Idea?</label>
-        <div class="checks">
-          <label class="check"><input type="checkbox" name="gain" value="Turn idea into business">Learn how to turn my idea into a business</label>
-          <label class="check"><input type="checkbox" name="gain" value="Validate idea">Validate my business idea</label>
-          <label class="check"><input type="checkbox" name="gain" value="Build brand">Learn how to build a strong brand</label>
-          <label class="check"><input type="checkbox" name="gain" value="Technology and AI">Learn about technology and AI</label>
-          <label class="check"><input type="checkbox" name="gain" value="Find customers">Find customers</label>
-          <label class="check"><input type="checkbox" name="gain" value="Grow business">Learn how to grow my business</label>
-          <label class="check"><input type="checkbox" name="gain" value="Funding">Learn about funding and investment</label>
-          <label class="check"><input type="checkbox" name="gain" value="Meet founders">Meet founders and entrepreneurs</label>
-          <label class="check"><input type="checkbox" name="gain" value="Partners">Find potential partners</label>
-          <label class="check"><input type="checkbox" name="gain" value="Communities">Connect with communities</label>
-          <label class="check"><input type="checkbox" name="gain" value="Mentors">Find mentors / experts</label>
-          <label class="check"><input type="checkbox" name="gain" value="Opportunities">Discover business opportunities</label>
-          <label class="check"><input type="checkbox" name="gain" value="Business support">Access business support</label>
-          <label class="check"><input type="checkbox" name="gain" value="Other">Other</label>
+      <div class="field" role="group" aria-labelledby="g-gain">
+        <p class="lbl" id="g-gain">What are you hoping to gain from Beyond the Idea?</p>
+        <div class="opts">
+          <label class="opt"><input type="checkbox" name="gain" value="Learn how to turn my idea into a business"><span>Learn how to turn my idea into a business</span></label>
+          <label class="opt"><input type="checkbox" name="gain" value="Validate my business idea"><span>Validate my business idea</span></label>
+          <label class="opt"><input type="checkbox" name="gain" value="Learn how to build a strong brand"><span>Learn how to build a strong brand</span></label>
+          <label class="opt"><input type="checkbox" name="gain" value="Learn about technology and AI"><span>Learn about technology and AI</span></label>
+          <label class="opt"><input type="checkbox" name="gain" value="Learn how to grow my business"><span>Learn how to grow my business</span></label>
+          <label class="opt"><input type="checkbox" name="gain" value="Learn about funding and investment"><span>Learn about funding and investment</span></label>
+          <label class="opt"><input type="checkbox" name="gain" value="Meet founders and entrepreneurs"><span>Meet founders and entrepreneurs</span></label>
+          <label class="opt"><input type="checkbox" name="gain" value="Find mentors / experts"><span>Find mentors / experts</span></label>
         </div>
       </div>
-      <div class="field">
-        <label for="challenge">What is the biggest challenge you are currently facing?</label>
-        <select id="challenge" name="challenge">
-          <option value="">Please Select</option>
-          <option>I don't know where to start</option><option>Validating my idea</option><option>Funding</option>
-          <option>Business registration / structure</option><option>Branding</option>
-          <option>Technology / product development</option><option>Finding customers</option>
-          <option>Marketing / visibility</option><option>Sales</option><option>Building a team</option>
-          <option>Business management</option><option>Scaling</option><option>Partnerships</option><option>Other</option>
-        </select>
+
+      <div class="field" role="group" aria-labelledby="g-challenge">
+        <p class="lbl" id="g-challenge">What is the biggest challenge you are currently facing?</p>
+        <div class="opts">
+          <label class="opt"><input type="checkbox" name="challenge" value="I don't know where to start"><span>I don't know where to start</span></label>
+          <label class="opt"><input type="checkbox" name="challenge" value="Validating my idea"><span>Validating my idea</span></label>
+          <label class="opt"><input type="checkbox" name="challenge" value="Funding"><span>Funding</span></label>
+          <label class="opt"><input type="checkbox" name="challenge" value="Branding"><span>Branding</span></label>
+          <label class="opt"><input type="checkbox" name="challenge" value="Technology / product development"><span>Technology / product development</span></label>
+          <label class="opt"><input type="checkbox" name="challenge" value="Finding customers"><span>Finding customers</span></label>
+          <label class="opt"><input type="checkbox" name="challenge" value="Building a team"><span>Building a team</span></label>
+          <label class="opt"><input type="checkbox" name="challenge" value="Other"><span>Other</span></label>
+        </div>
       </div>
 
       <h2 class="step-title step-title--sub">6. How Did You Hear About Us?</h2>
-      <div class="field">
-        <label for="source">How did you hear about Beyond the Idea?</label>
-        <select id="source" name="heard_from">
-          <option value="">Please Select</option>
-          <option>Instagram</option><option>Facebook</option><option>LinkedIn</option><option>X</option>
-          <option>TikTok</option><option>WhatsApp</option><option>YouTube</option><option>Other</option>
-        </select>
+      <div class="field" role="group" aria-labelledby="g-source">
+        <p class="lbl" id="g-source">How did you hear about Beyond the Idea?</p>
+        <div class="opts">
+          <label class="opt"><input type="checkbox" name="heard_from" value="Instagram"><span>Instagram</span></label>
+          <label class="opt"><input type="checkbox" name="heard_from" value="Facebook"><span>Facebook</span></label>
+          <label class="opt"><input type="checkbox" name="heard_from" value="LinkedIn"><span>LinkedIn</span></label>
+          <label class="opt"><input type="checkbox" name="heard_from" value="X"><span>X</span></label>
+          <label class="opt"><input type="checkbox" name="heard_from" value="TikTok"><span>TikTok</span></label>
+          <label class="opt"><input type="checkbox" name="heard_from" value="WhatsApp"><span>WhatsApp</span></label>
+          <label class="opt"><input type="checkbox" name="heard_from" value="YouTube"><span>YouTube</span></label>
+          <label class="opt"><input type="checkbox" name="heard_from" value="Other"><span>Other</span></label>
+        </div>
       </div>
     </fieldset>
 
@@ -163,17 +174,32 @@
       <button type="button" class="btn btn-next" id="btnNext">Next <span aria-hidden="true">&rarr;</span></button>
       <button type="submit" class="btn btn-next" id="btnSubmit" hidden>Submit <span aria-hidden="true">&rarr;</span></button>
     </div>
+    <p class="reg-error" id="regError" role="alert" hidden>Something went wrong. Please try again.</p>
   </form>
+
+  <!-- ========== SUCCESS (shown after a successful submit) ========== -->
+  <section class="reg-success" id="success" hidden>
+    <div class="reg-tick"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+    <h2>Registration Successful</h2>
+    <a class="btn btn-next" id="communityBtn" href="#" target="_blank" rel="noopener">Join Our Community <span aria-hidden="true">&rarr;</span></a>
+  </section>
 </main>
 
 <script>
+  /* ===== SETTINGS: fill these in ===== */
+  const SUPABASE_URL      = 'https://YOUR-PROJECT.supabase.co';   // Supabase > Project Settings > API > Project URL
+  const SUPABASE_ANON_KEY = 'YOUR-ANON-PUBLIC-KEY';               // Supabase > Project Settings > API > anon public key
+  const TABLE             = 'registrations';                      // the table name from the SQL
+  const COMMUNITY_LINK    = 'https://chat.whatsapp.com/YOUR-LINK'; // your community invite link
+
   const form = document.getElementById('regForm');
   const steps = [...form.querySelectorAll('.step')];
   const dots = [...document.querySelectorAll('#progress li')];
   const btnBack = document.getElementById('btnBack');
   const btnNext = document.getElementById('btnNext');
   const btnSubmit = document.getElementById('btnSubmit');
-  let cur = 0;
+  const errBox = document.getElementById('regError');
+  let cur = 0, sending = false;
 
   function show(n) {
     cur = n;
@@ -190,15 +216,56 @@
 
   function next() {
     // the current step must be valid before moving on
-    const fields = [...steps[cur].querySelectorAll('input, select')];
+    const fields = [...steps[cur].querySelectorAll('input')];
     for (const f of fields) { if (!f.checkValidity()) { f.reportValidity(); return; } }
     if (cur < steps.length - 1) show(cur + 1);
   }
 
   btnNext.addEventListener('click', next);
   btnBack.addEventListener('click', () => show(cur - 1));
-  // pressing Enter on steps 1-2 goes to the next step instead of submitting
-  form.addEventListener('submit', e => { if (cur < steps.length - 1) { e.preventDefault(); next(); } });
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (cur < steps.length - 1) { next(); return; }   // Enter on steps 1-2 = Next
+    if (sending) return;
+    sending = true; errBox.hidden = true;
+    btnSubmit.disabled = true; btnSubmit.firstChild.textContent = 'Sending... ';
+
+    // collect the answers (every checkbox question becomes a list)
+    const LISTS = ['describes_you', 'industry', 'stage', 'gain', 'challenge', 'heard_from'];
+    const data = {};
+    for (const [k, v] of new FormData(form).entries()) {
+      if (LISTS.includes(k)) (data[k] = data[k] || []).push(v);
+      else data[k] = v === '' ? null : v;
+    }
+
+    try {
+      const res = await fetch(SUPABASE_URL + '/rest/v1/' + TABLE, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify(data)
+      });
+      if (!res.ok) throw new Error('Request failed: ' + res.status);
+
+      // success: hide the form, show the success message + community button
+      form.hidden = true;
+      document.getElementById('progress').hidden = true;
+      document.getElementById('communityBtn').href = COMMUNITY_LINK;
+      const ok = document.getElementById('success');
+      ok.hidden = false;
+      ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } catch (err) {
+      console.error(err);
+      errBox.hidden = false;
+      btnSubmit.disabled = false; btnSubmit.firstChild.textContent = 'Submit ';
+    }
+    sending = false;
+  });
 </script>
 </body>
 </html>
