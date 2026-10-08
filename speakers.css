@@ -1,0 +1,75 @@
+/* hero background: swap this for your own photo (e.g. url("./img/stage.png")) */
+:root {
+    --purple: #5b0f6e;
+    --purple-deep: #2e0839;
+    --lilac: #e9a7ff;
+    --green: #3fb52f;
+    --white: #fff;
+    --ink: #1d1224;
+    --gutter: clamp(14px, 4vw, 56px);   /* same side spacing as the navbar */
+    /* --hero-img: url("https://assets.mixkit.co/videos/13192/13192-thumb-720-3.jpg"); */
+    --hero-img: url("./img/stage.png");
+  }
+  
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Inter", system-ui, sans-serif; color: var(--ink); background: #faf7fb; line-height: 1.6; overflow-x: clip; overflow-wrap: normal; word-break: normal; hyphens: none; -webkit-text-size-adjust: 100%; }
+  img { max-width: 100%; }
+  :focus-visible { outline: 3px solid var(--lilac); outline-offset: 3px; }
+  
+  /* =====================================================
+     1. HERO
+  ===================================================== */
+  .spg-hero {
+    position: relative; isolation: isolate; overflow: hidden;
+    display: grid; place-items: center; text-align: center; color: #fff;
+    min-height: clamp(300px, 40vw, 480px);
+    /* top space keeps the title clear of a fixed navbar */
+    padding: calc(var(--nav-h, 88px) + clamp(24px, 4vw, 56px)) var(--gutter) clamp(48px, 7vw, 90px);
+    background: linear-gradient(160deg, #7a1a8f, var(--purple) 45%, var(--purple-deep));
+  }
+  .spg-hero-bg { position: absolute; inset: 0; z-index: -1; background: var(--hero-img) center / cover no-repeat; }
+  .spg-hero-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(46, 8, 57, .55), rgba(46, 8, 57, .82)); }
+  .spg-date { color: var(--lilac); font-size: clamp(.68rem, 1.1vw, .85rem); font-weight: 700; letter-spacing: .3em; margin-bottom: clamp(8px, 1.4vw, 16px); }
+  .spg-hero h1 { font-size: clamp(2rem, 6.4vw, 5rem); font-weight: 900; line-height: 1; letter-spacing: -.02em; text-wrap: balance; }
+  .spg-sub { margin-top: clamp(12px, 2vw, 22px); font-size: clamp(.68rem, 1.2vw, .9rem); font-weight: 700; letter-spacing: .12em; }
+  
+  /* =====================================================
+     2. SCROLLING STRIP
+  ===================================================== */
+  .spg-marquee { background: var(--purple); color: #fff; overflow: hidden; white-space: nowrap; padding: clamp(12px, 1.6vw, 18px) 0; }
+  .spg-marquee .track { display: inline-flex; width: max-content; animation: spgScroll 30s linear infinite; }
+  .spg-marquee span { font-size: clamp(1rem, 2vw, 1.6rem); font-style: italic; padding: 0 clamp(24px, 4vw, 56px); }
+  @keyframes spgScroll { to { transform: translateX(-50%); } }
+  
+  /* =====================================================
+     3. SPEAKERS (same design as the landing page section)
+  ===================================================== */
+  .spg { width: 100%; padding: clamp(56px, 8vw, 96px) var(--gutter); }
+  .spg-label { display: flex; align-items: center; gap: 12px; color: var(--purple); font-size: clamp(.68rem, 1vw, .82rem); font-weight: 800; letter-spacing: .18em; margin-bottom: clamp(12px, 1.6vw, 20px); }
+  .spg-label::before { content: ""; width: 8px; height: 8px; background: var(--purple); }
+  .spg-heading { font-size: clamp(1.5rem, 4.6vw, 4rem); font-weight: 800; line-height: 1.1; letter-spacing: -.03em; color: var(--ink); }
+  .spg-heading span { color: var(--green); }
+  .spg-lead { margin: clamp(10px, 1.4vw, 16px) 0 clamp(32px, 4.5vw, 56px); font-size: clamp(.95rem, 1.6vw, 1.2rem); color: #6b6b6b; }
+  
+  .spg-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(10px, 1.6vw, 22px); }
+  .spg-card { position: relative; overflow: hidden; min-width: 0; aspect-ratio: 4 / 5; border-radius: clamp(6px, .8vw, 10px); background: #e6d9ec; }
+  .spg-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform .5s ease; }
+  .spg-card:hover img { transform: scale(1.04); }
+  .spg-info { position: absolute; inset: auto 0 0 0; color: var(--white); padding: clamp(36px, 5vw, 70px) clamp(12px, 1.6vw, 22px) clamp(12px, 1.6vw, 22px); background: linear-gradient(to top, rgba(46, 8, 57, .94), rgba(46, 8, 57, 0)); }
+  .spg-info::before { content: ""; display: block; width: 34px; height: 4px; background: var(--green); margin-bottom: clamp(6px, .8vw, 10px); }
+  .spg-info h3 { font-size: clamp(.9rem, 1.6vw, 1.3rem); font-weight: 700; line-height: 1.2; }
+  .spg-info p { margin-top: 2px; font-size: clamp(.72rem, 1.1vw, .92rem); opacity: .88; }
+  
+  /* =====================================================
+     MEDIA QUERIES
+  ===================================================== */
+  @media (max-width: 1000px) {
+    .spg-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 560px) {
+    .spg-grid { grid-template-columns: minmax(0, 1fr); width: clamp(260px, 84vw, 440px); margin-inline: auto; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+    .spg-marquee .track { animation: none; }
+  }

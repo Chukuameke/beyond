@@ -839,7 +839,7 @@ footer {
   gap: clamp(8px, 1vw, 14px);
   margin-top: 8px;
   white-space: nowrap;
-  background: #62b536;
+  background:var(--green);
   color: var(--white);
   font-weight: 600;
   letter-spacing: .02em;
@@ -1176,7 +1176,7 @@ footer {
 .bti-eyebrow {
   display: inline-block;
   margin-bottom: 16px;
-  color: #a8e66b;
+  color: var(--card-green);
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 1.8px;
@@ -1225,8 +1225,8 @@ footer {
 }
 
 .bti-btn-primary {
-  background: #a8e66b;
-  color: #17151f;
+  background:var(--card-green);
+  color:var(--white);
 }
 
 .bti-btn-outline {
@@ -1544,6 +1544,7 @@ footer {
 
 .view-speakers {
   margin-top: clamp(28px, 4vw, 50px);
+  background-color: var(--card-green) !important;
 }
 
 /* speakers: breakpoints that were missing */

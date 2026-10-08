@@ -7,10 +7,30 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="register.css">
+  <link rel="stylesheet" href="main.css">
+  <script defer src='main.js'></script>
 </head>
 <body>
 
 <!-- ========== HERO (replace the image URL in register.css: --hero-img) ========== -->
+<header class="nav" id="nav">
+  <a href="index.html" class="logo">
+    <!-- <img src="./img/logo1.PNG" alt=""> -->
+    Beyond<br>the Idea<br><small>Dec '26</small>
+  </a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home" class="active">Home</a></li>
+    <li><a href="#speakers">Speakers</a></li>
+
+    <!-- <li><a href="#agenda">Agenda</a></li> -->
+    <li><a href="#sponsors">Sponsors</a></li>
+    <li><a href="#journey">Founder's epic</a></li>
+
+  </ul>
+  <a href="register.html" class="btn-register">Register / Sponsor</a>
+</header>
+
 <header class="reg-hero">
   <div class="reg-hero-bg" aria-hidden="true"></div>
   <div class="reg-hero-inner">
@@ -266,6 +286,11 @@
     }
     sending = false;
   });
+
+
+
+  
 </script>
+
 </body>
 </html>
