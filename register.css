@@ -315,6 +315,15 @@ input[type="tel"]:focus {
     color: var(--purple);
 }
 
+/* ---------- "OTHER" TEXT LINE ---------- */
+.opts .other-input {
+    width: calc(100% - clamp(32px, 3.4vw, 38px));
+    /* lines up under the option text */
+    margin-left: clamp(32px, 3.4vw, 38px);
+    min-height: clamp(44px, 4.6vw, 52px);
+    animation: regFade .25s ease;
+}
+
 /* ---------- BUILD ROOMS ---------- */
 .rooms {
     display: grid;
@@ -501,6 +510,9 @@ input[type="tel"]:focus {
 .reg-success .btn-next {
     margin-left: 0;
 }
+/* ---------- REQUIRED QUESTIONS ---------- */
+.field .lbl b { color: var(--purple); }
+.q-error { margin-top: 10px; color: #b3261e; font-size: clamp(.82rem, 1.2vw, .95rem); font-weight: 600; }
 
 /* =====================================================
      MEDIA QUERIES

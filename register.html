@@ -59,7 +59,7 @@
     <li><b>3</b><span>Conference</span></li>
   </ol>
 
-  <form class="reg-form" id="regForm" action="#" method="post">
+  <form class="reg-form" id="regForm" action="#" method="post" novalidate>
 
     <!-- ========== STEP 1 ========== -->
     <fieldset class="step" data-step="1">
@@ -77,8 +77,8 @@
     <fieldset class="step" data-step="2" hidden>
       <h2 class="step-title">2. Professional / Entrepreneurial Profile</h2>
 
-      <div class="field" role="group" aria-labelledby="g-describe">
-        <p class="lbl" id="g-describe">What best describes you?</p>
+      <div class="field" role="group" aria-labelledby="g-describe" data-required>
+        <p class="lbl" id="g-describe">What best describes you? <b>*</b></p>
         <div class="opts">
           <label class="opt"><input type="checkbox" name="describes_you" value="Student"><span>Student</span></label>
           <label class="opt"><input type="checkbox" name="describes_you" value="Aspiring Entrepreneur"><span>Aspiring Entrepreneur</span></label>
@@ -88,8 +88,9 @@
           <label class="opt"><input type="checkbox" name="describes_you" value="Techpreneur"><span>Techpreneur</span></label>
           <label class="opt"><input type="checkbox" name="describes_you" value="Creative"><span>Creative</span></label>
           <label class="opt"><input type="checkbox" name="describes_you" value="Other"><span>Other</span></label>
-          <input class="other-input" type="text" name="describes_you_other" placeholder="Type your answer (optional)" aria-label="Other, please specify (optional)" hidden>
+          <input class="other-input" type="text" name="describes_you_other" placeholder="Please type your answer" aria-label="Other, please specify" hidden>
         </div>
+        <p class="q-error" role="alert" hidden>Please choose at least one option.</p>
       </div>
 
       <div class="field">
@@ -98,8 +99,8 @@
         <input id="org" name="organization" type="text">
       </div>
 
-      <div class="field" role="group" aria-labelledby="g-industry">
-        <p class="lbl" id="g-industry">Industry / Area</p>
+      <div class="field" role="group" aria-labelledby="g-industry" data-required>
+        <p class="lbl" id="g-industry">Industry / Area <b>*</b></p>
         <div class="opts">
           <label class="opt"><input type="checkbox" name="industry" value="Technology"><span>Technology</span></label>
           <label class="opt"><input type="checkbox" name="industry" value="Finance / Fintech"><span>Finance / Fintech</span></label>
@@ -109,13 +110,14 @@
           <label class="opt"><input type="checkbox" name="industry" value="Health"><span>Health</span></label>
           <label class="opt"><input type="checkbox" name="industry" value="E-commerce"><span>E-commerce</span></label>
           <label class="opt"><input type="checkbox" name="industry" value="Other"><span>Other</span></label>
-          <input class="other-input" type="text" name="industry_other" placeholder="Type your answer (optional)" aria-label="Other, please specify (optional)" hidden>
+          <input class="other-input" type="text" name="industry_other" placeholder="Please type your answer" aria-label="Other, please specify" hidden>
         </div>
+        <p class="q-error" role="alert" hidden>Please choose at least one option.</p>
       </div>
 
       <h2 class="step-title step-title--sub">3. Your Current Stage</h2>
-      <div class="field" role="group" aria-labelledby="g-stage">
-        <p class="lbl" id="g-stage">Which best describes where you are currently?</p>
+      <div class="field" role="group" aria-labelledby="g-stage" data-required>
+        <p class="lbl" id="g-stage">Which best describes where you are currently? <b>*</b></p>
         <div class="opts">
           <label class="opt"><input type="checkbox" name="stage" value="I only have an idea"><span>I only have an idea</span></label>
           <label class="opt"><input type="checkbox" name="stage" value="I am validating an idea"><span>I am validating an idea</span></label>
@@ -126,14 +128,15 @@
           <label class="opt"><input type="checkbox" name="stage" value="I am trying to grow the business"><span>I am trying to grow the business</span></label>
           <label class="opt"><input type="checkbox" name="stage" value="I am scaling an existing business"><span>I am scaling an existing business</span></label>
         </div>
+        <p class="q-error" role="alert" hidden>Please choose at least one option.</p>
       </div>
     </fieldset>
 
     <!-- ========== STEP 3 ========== -->
     <fieldset class="step" data-step="3" hidden>
       <h2 class="step-title">4. Build Room Selection</h2>
-      <div class="field" role="group" aria-labelledby="g-room">
-        <p class="lbl" id="g-room">Which Build Room would you like to join?</p>
+      <div class="field" role="group" aria-labelledby="g-room" data-required>
+        <p class="lbl" id="g-room">Which Build Room would you like to join? <b>*</b></p>
         <small>Participants should select one primary room.</small>
         <div class="rooms">
           <label class="room"><input type="radio" name="build_room" value="Validation Room"><span class="room-n">1</span><span><strong>THE VALIDATION ROOM</strong><em>From Idea to Validated Solution</em></span></label>
@@ -143,11 +146,12 @@
           <label class="room"><input type="radio" name="build_room" value="Growth Room"><span class="room-n">5</span><span><strong>THE GROWTH ROOM</strong><em>Money, Market &amp; Growth</em></span></label>
           <label class="room"><input type="radio" name="build_room" value="Sales Room"><span class="room-n">6</span><span><strong>SALES ROOM</strong></span></label>
         </div>
+        <p class="q-error" role="alert" hidden>Please select a Build Room.</p>
       </div>
 
       <h2 class="step-title step-title--sub">5. What Do You Want From The Conference?</h2>
-      <div class="field" role="group" aria-labelledby="g-gain">
-        <p class="lbl" id="g-gain">What are you hoping to gain from Beyond the Idea?</p>
+      <div class="field" role="group" aria-labelledby="g-gain" data-required>
+        <p class="lbl" id="g-gain">What are you hoping to gain from Beyond the Idea? <b>*</b></p>
         <div class="opts">
           <label class="opt"><input type="checkbox" name="gain" value="Learn how to turn my idea into a business"><span>Learn how to turn my idea into a business</span></label>
           <label class="opt"><input type="checkbox" name="gain" value="Validate my business idea"><span>Validate my business idea</span></label>
@@ -158,10 +162,11 @@
           <label class="opt"><input type="checkbox" name="gain" value="Meet founders and entrepreneurs"><span>Meet founders and entrepreneurs</span></label>
           <label class="opt"><input type="checkbox" name="gain" value="Find mentors / experts"><span>Find mentors / experts</span></label>
         </div>
+        <p class="q-error" role="alert" hidden>Please choose at least one option.</p>
       </div>
 
-      <div class="field" role="group" aria-labelledby="g-challenge">
-        <p class="lbl" id="g-challenge">What is the biggest challenge you are currently facing?</p>
+      <div class="field" role="group" aria-labelledby="g-challenge" data-required>
+        <p class="lbl" id="g-challenge">What is the biggest challenge you are currently facing? <b>*</b></p>
         <div class="opts">
           <label class="opt"><input type="checkbox" name="challenge" value="I don't know where to start"><span>I don't know where to start</span></label>
           <label class="opt"><input type="checkbox" name="challenge" value="Validating my idea"><span>Validating my idea</span></label>
@@ -171,13 +176,14 @@
           <label class="opt"><input type="checkbox" name="challenge" value="Finding customers"><span>Finding customers</span></label>
           <label class="opt"><input type="checkbox" name="challenge" value="Building a team"><span>Building a team</span></label>
           <label class="opt"><input type="checkbox" name="challenge" value="Other"><span>Other</span></label>
-          <input class="other-input" type="text" name="challenge_other" placeholder="Type your answer (optional)" aria-label="Other, please specify (optional)" hidden>
+          <input class="other-input" type="text" name="challenge_other" placeholder="Please type your answer" aria-label="Other, please specify" hidden>
         </div>
+        <p class="q-error" role="alert" hidden>Please choose at least one option.</p>
       </div>
 
       <h2 class="step-title step-title--sub">6. How Did You Hear About Us?</h2>
-      <div class="field" role="group" aria-labelledby="g-source">
-        <p class="lbl" id="g-source">How did you hear about Beyond the Idea?</p>
+      <div class="field" role="group" aria-labelledby="g-source" data-required>
+        <p class="lbl" id="g-source">How did you hear about Beyond the Idea? <b>*</b></p>
         <div class="opts">
           <label class="opt"><input type="checkbox" name="heard_from" value="Instagram"><span>Instagram</span></label>
           <label class="opt"><input type="checkbox" name="heard_from" value="Facebook"><span>Facebook</span></label>
@@ -187,8 +193,9 @@
           <label class="opt"><input type="checkbox" name="heard_from" value="WhatsApp"><span>WhatsApp</span></label>
           <label class="opt"><input type="checkbox" name="heard_from" value="YouTube"><span>YouTube</span></label>
           <label class="opt"><input type="checkbox" name="heard_from" value="Other"><span>Other</span></label>
-          <input class="other-input" type="text" name="heard_from_other" placeholder="Type your answer (optional)" aria-label="Other, please specify (optional)" hidden>
+          <input class="other-input" type="text" name="heard_from_other" placeholder="Please type your answer" aria-label="Other, please specify" hidden>
         </div>
+        <p class="q-error" role="alert" hidden>Please choose at least one option.</p>
       </div>
     </fieldset>
 
@@ -238,22 +245,55 @@
     document.getElementById('progress').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
+  // checks every question on the current step, in order; stops at the first one that is missing
+  function validateStep(step) {
+    for (const field of step.querySelectorAll('.field')) {
+      if (field.hasAttribute('data-required')) {
+        // a question: at least one option must be chosen
+        const err = field.querySelector('.q-error');
+        if (!field.querySelector('input[type="checkbox"]:checked, input[type="radio"]:checked')) {
+          err.hidden = false;
+          field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return false;
+        }
+        err.hidden = true;
+        // "Other" ticked: the typed answer is compulsory too
+        const other = field.querySelector('.other-input');
+        if (other && !other.hidden && !other.value.trim()) {
+          other.value = '';
+          other.reportValidity();
+          return false;
+        }
+      } else {
+        // a normal text field
+        for (const inp of field.querySelectorAll('input')) {
+          if (!inp.checkValidity()) { inp.reportValidity(); return false; }
+        }
+      }
+    }
+    return true;
+  }
+
   function next() {
-    // the current step must be valid before moving on
-    const fields = [...steps[cur].querySelectorAll('input')];
-    for (const f of fields) { if (!f.checkValidity()) { f.reportValidity(); return; } }
+    if (!validateStep(steps[cur])) return;
     if (cur < steps.length - 1) show(cur + 1);
   }
 
   btnNext.addEventListener('click', next);
   btnBack.addEventListener('click', () => show(cur - 1));
 
-  // "Other": show an optional text line when ticked
+  // hide a question's error message as soon as the person answers it
+  document.querySelectorAll('.field[data-required]').forEach(q => {
+    q.addEventListener('change', () => { q.querySelector('.q-error').hidden = true; });
+  });
+
+  // "Other": show a text line when ticked (compulsory while it is showing)
   document.querySelectorAll('.opt input[value="Other"]').forEach(box => {
     const line = box.closest('.opt').nextElementSibling;
     if (!line || !line.classList.contains('other-input')) return;
     box.addEventListener('change', () => {
       line.hidden = !box.checked;
+      line.required = box.checked;
       if (box.checked) line.focus(); else line.value = '';
     });
   });
@@ -261,6 +301,7 @@
   form.addEventListener('submit', async e => {
     e.preventDefault();
     if (cur < steps.length - 1) { next(); return; }   // Enter on steps 1-2 = Next
+    if (!validateStep(steps[cur])) return;            // last step must be complete too
     if (sending) return;
     sending = true; errBox.hidden = true;
     btnSubmit.disabled = true; btnSubmit.firstChild.textContent = 'Sending... ';
@@ -306,10 +347,6 @@
     }
     sending = false;
   });
-
-
-
-  
 </script>
 
 </body>
