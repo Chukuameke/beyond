@@ -1,0 +1,280 @@
+/* hero background: swap this for your own photo (e.g. url("./img/stage.png")) */
+:root {
+    --purple: #5b0f6e;
+    --purple-deep: #2e0839;
+    --lilac: #e9a7ff;
+    --green: #3fb52f;
+    --white: #fff;
+    --ink: #1d1224;
+    --gutter: clamp(14px, 4vw, 56px);
+    /* same side spacing as the navbar */
+    /* --hero-img: url("https://assets.mixkit.co/videos/13192/13192-thumb-720-3.jpg"); */
+    --hero-img: url("./img/stage.png");
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Inter", system-ui, sans-serif;
+    color: var(--ink);
+    background: #faf7fb;
+    line-height: 1.6;
+    overflow-x: clip;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+    -webkit-text-size-adjust: 100%;
+}
+
+img {
+    max-width: 100%;
+}
+
+:focus-visible {
+    outline: 3px solid var(--lilac);
+    outline-offset: 3px;
+}
+
+/* =====================================================
+     1. HERO
+  ===================================================== */
+.spn-hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    color: #fff;
+    min-height: clamp(300px, 40vw, 480px);
+    /* top space keeps the title clear of a fixed navbar */
+    padding: calc(var(--nav-h, 88px) + clamp(24px, 4vw, 56px)) var(--gutter) clamp(48px, 7vw, 90px);
+    background: linear-gradient(160deg, #7a1a8f, var(--purple) 45%, var(--purple-deep));
+}
+
+.spn-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--hero-img) center / cover no-repeat;
+}
+
+.spn-hero-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(46, 8, 57, .55), rgba(46, 8, 57, .82));
+}
+
+.spn-date {
+    color: var(--lilac);
+    font-size: clamp(.68rem, 1.1vw, .85rem);
+    font-weight: 700;
+    letter-spacing: .3em;
+    margin-bottom: clamp(8px, 1.4vw, 16px);
+}
+
+.spn-hero h1 {
+    font-size: clamp(2rem, 6.4vw, 5rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -.02em;
+    text-wrap: balance;
+}
+
+.spn-sub {
+    margin-top: clamp(12px, 2vw, 22px);
+    font-size: clamp(.68rem, 1.2vw, .9rem);
+    font-weight: 700;
+    letter-spacing: .12em;
+}
+
+/* =====================================================
+     2. SCROLLING STRIP
+  ===================================================== */
+.spn-marquee {
+    background: var(--purple);
+    color: #fff;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: clamp(12px, 1.6vw, 18px) 0;
+}
+
+.spn-marquee .track {
+    display: inline-flex;
+    width: max-content;
+    animation: spnScroll 30s linear infinite;
+}
+
+.spn-marquee span {
+    font-size: clamp(1rem, 2vw, 1.6rem);
+    font-style: italic;
+    padding: 0 clamp(24px, 4vw, 56px);
+}
+
+@keyframes spnScroll {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* =====================================================
+     3. SPONSORS & PARTNERS (centred text + logo grid)
+  ===================================================== */
+.spn {
+    width: 100%;
+    padding: clamp(56px, 8vw, 96px) var(--gutter);
+    text-align: center;
+}
+
+.spn-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: clamp(10px, 1.4vw, 18px);
+    color: #5d4f66;
+    font-size: clamp(.68rem, 1vw, .82rem);
+    font-weight: 800;
+    letter-spacing: .18em;
+}
+
+.spn-label::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    flex: 0 0 8px;
+    background: var(--green);
+}
+
+.spn-heading {
+    color: var(--ink);
+    font-size: clamp(1.7rem, 5.4vw, 4.2rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -.03em;
+    text-transform: uppercase;
+    text-wrap: balance;
+}
+
+.spn-lead {
+    max-width: 62ch;
+    margin: clamp(12px, 1.6vw, 20px) auto clamp(32px, 5vw, 60px);
+    color: #6b6b6b;
+    font-size: clamp(.95rem, 1.6vw, 1.2rem);
+    line-height: 1.6;
+}
+
+/* logo grid */
+.spn-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(12px, 1.5vw, 20px);
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.spn-logo {
+    min-width: 0;
+    min-height: clamp(90px, 9vw, 120px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: clamp(18px, 2vw, 28px);
+    background: #fff;
+    border: 1px solid rgba(20, 20, 20, .07);
+    border-radius: 10px;
+    color: #8d8398;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .04), 0 8px 24px rgba(0, 0, 0, .035);
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, color .25s ease;
+}
+
+.spn-logo:hover {
+    transform: translateY(-3px);
+    color: var(--purple);
+    border-color: rgba(20, 20, 20, .12);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .06), 0 12px 28px rgba(0, 0, 0, .06);
+}
+
+.spn-logo img {
+    display: block;
+    width: min(130px, 80%);
+    height: clamp(38px, 4.5vw, 55px);
+    object-fit: contain;
+}
+
+/* temporary placeholder (delete when real logos are in) */
+.spn-mark {
+    width: clamp(28px, 3.4vw, 44px);
+    height: clamp(28px, 3.4vw, 44px);
+    border-radius: 50%;
+    background: currentColor;
+    opacity: .35;
+}
+
+.spn-logo:nth-child(4n+2) .spn-mark {
+    border-radius: 12%;
+}
+
+.spn-logo:nth-child(4n+3) .spn-mark {
+    border-radius: 50% 50% 0 50%;
+}
+
+.spn-logo:nth-child(4n) .spn-mark {
+    border-radius: 50% 0 50% 50%;
+}
+
+.spn-name {
+    font-size: clamp(.6rem, 1vw, .8rem);
+    font-weight: 800;
+    letter-spacing: .1em;
+    white-space: nowrap;
+}
+
+/* =====================================================
+     MEDIA QUERIES
+  ===================================================== */
+@media (max-width: 900px) {
+    .spn-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .spn-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .spn-logo {
+        min-height: 90px;
+        padding: 16px;
+    }
+}
+
+@media (max-width: 380px) {
+    .spn-grid {
+        gap: 10px;
+    }
+
+    .spn-logo {
+        min-height: 80px;
+        padding: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+
+    .spn-marquee .track {
+        animation: none;
+    }
+}
