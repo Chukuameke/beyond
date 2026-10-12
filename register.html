@@ -212,16 +212,36 @@
   <section class="reg-success" id="success" hidden>
     <div class="reg-tick"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
     <h2>Registration Successful</h2>
-    <a class="btn btn-next" id="communityBtn" href="#" target="_blank" rel="noopener">Join Our Community <span aria-hidden="true">&rarr;</span></a>
+    <a class="btn btn-next" id="communityBtn" href="#" target="_blank" rel="noopener">Join Your WhatsApp Group <span aria-hidden="true">&rarr;</span></a>
   </section>
 </main>
 
+<!-- WhatsApp popup (opens after a successful registration) -->
+<dialog class="wa-modal" id="waModal" aria-labelledby="waTitle">
+  <div class="reg-tick"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+  <p class="wa-kicker">You're registered</p>
+  <h2 id="waTitle">Join <span id="waRoom">your Build Room</span> WhatsApp group</h2>
+  <p class="wa-text">Connect with the other participants in your room.</p>
+  <a class="btn btn-next" id="waJoin" href="#" target="_blank" rel="noopener">Join on WhatsApp <span aria-hidden="true">&rarr;</span></a>
+  <button type="button" class="wa-close" id="waClose">Close</button>
+</dialog>
+
 <script>
   /* ===== SETTINGS: fill these in ===== */
-  const SUPABASE_URL      = 'https://YOUR-PROJECT.supabase.co';   // Supabase > Project Settings > API > Project URL
-  const SUPABASE_ANON_KEY = 'YOUR-ANON-PUBLIC-KEY';               // Supabase > Project Settings > API > anon public key
+  const SUPABASE_URL      = 'https://tldabolvqdtlylgwpgst.supabase.co';   // Supabase > Project Settings > API > Project URL
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRsZGFib2x2cWR0bHlsZ3dwZ3N0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTEwNTIwMzIsImV4cCI6MjEwNjYyODAzMn0.eFyW_do1SIBbL4NrVln8QLBJnM1HedeQzc423L1n4RY';               // Supabase > Project Settings > API > anon public key
   const TABLE             = 'registrations';                      // the table name from the SQL
-  const COMMUNITY_LINK    = 'https://chat.whatsapp.com/YOUR-LINK'; // your community invite link
+  const COMMUNITY_LINK    = 'https://chat.whatsapp.com/YOUR-GENERAL-LINK'; // fallback if a room has no link
+
+  // One WhatsApp group per Build Room. Keys must match the radio values in the form exactly.
+  const ROOM_LINKS = {
+    'Validation Room': 'https://chat.whatsapp.com/YOUR-VALIDATION-LINK',
+    'Business Room':   'https://chat.whatsapp.com/YOUR-BUSINESS-LINK',
+    'Brand Room':      'https://chat.whatsapp.com/YOUR-BRAND-LINK',
+    'Tech Room':       'https://chat.whatsapp.com/YOUR-TECH-LINK',
+    'Growth Room':     'https://chat.whatsapp.com/YOUR-GROWTH-LINK',
+    'Sales Room':      'https://chat.whatsapp.com/YOUR-SALES-LINK'
+  };
 
   const form = document.getElementById('regForm');
   const steps = [...form.querySelectorAll('.step')];
@@ -298,6 +318,19 @@
     });
   });
 
+  // ---- WhatsApp popup ----
+  const modal = document.getElementById('waModal');
+  document.getElementById('waClose').addEventListener('click', () => modal.close());
+  modal.addEventListener('click', e => { if (e.target === modal) modal.close(); }); // click outside closes
+
+  function showWhatsApp(room) {
+    const link = ROOM_LINKS[room] || COMMUNITY_LINK;
+    document.getElementById('waRoom').textContent = 'The ' + room;
+    document.getElementById('waJoin').href = link;
+    document.getElementById('communityBtn').href = link;
+    modal.showModal();
+  }
+
   form.addEventListener('submit', async e => {
     e.preventDefault();
     if (cur < steps.length - 1) { next(); return; }   // Enter on steps 1-2 = Next
@@ -319,6 +352,7 @@
       const typed = (form.elements[k + '_other']?.value || '').trim();
       if (typed && data[k]) data[k] = data[k].map(v => v === 'Other' ? 'Other: ' + typed : v);
     });
+    if (data.email) data.email = data.email.trim().toLowerCase();
 
     try {
       const res = await fetch(SUPABASE_URL + '/rest/v1/' + TABLE, {
@@ -331,17 +365,22 @@
         },
         body: JSON.stringify(data)
       });
+      if (res.status === 409) {                        // duplicate email
+        errBox.textContent = 'This email is already registered.';
+        errBox.hidden = false;
+        btnSubmit.disabled = false; btnSubmit.firstChild.textContent = 'Submit ';
+        sending = false; return;
+      }
       if (!res.ok) throw new Error('Request failed: ' + res.status);
 
-      // success: hide the form, show the success message + community button
+      // success: hide the form, show the success page, open the WhatsApp popup
       form.hidden = true;
       document.getElementById('progress').hidden = true;
-      document.getElementById('communityBtn').href = COMMUNITY_LINK;
-      const ok = document.getElementById('success');
-      ok.hidden = false;
-      ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      document.getElementById('success').hidden = false;
+      showWhatsApp(data.build_room);
     } catch (err) {
       console.error(err);
+      errBox.textContent = 'Something went wrong. Please try again.';
       errBox.hidden = false;
       btnSubmit.disabled = false; btnSubmit.firstChild.textContent = 'Submit ';
     }
