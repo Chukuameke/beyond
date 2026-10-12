@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Admin — Beyond the Idea 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800&family=Courier+Prime:wght@400;700&family=Syne:wght@800&family=Orbitron:wght@800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<form class="login" id="login">
+  <h1 style="font-size:40px">Admin sign in</h1>
+  <input type="email" id="em" placeholder="Email" required autocomplete="username" aria-label="Email">
+  <input type="password" id="pw" placeholder="Password" required autocomplete="current-password" aria-label="Password">
+  <button class="btn" type="submit">Sign in</button>
+  <p class="msg" id="lm" role="alert"></p>
+</form>
+
+<div class="adm" id="app" hidden>
+  <div class="bar">
+    <h1 style="font-size:36px">Registrations</h1>
+    <div><button class="btn ghost" id="csv">Export CSV</button> <button class="btn ghost" id="out">Sign out</button></div>
+  </div>
+  <div class="cards">
+    <div class="kpi"><b id="k1">0</b><span>Total registrations</span></div>
+    <div class="kpi"><b id="k2">0</b><span>Registered today</span></div>
+    <div class="kpi"><b id="k3">0</b><span>Countries</span></div>
+    <div class="kpi" style="grid-column:span 2;min-width:300px"><span>By Build Room</span><div id="rb"></div></div>
+  </div>
+  <div class="tools">
+    <input type="search" id="q" placeholder="Search name, email, business" aria-label="Search">
+    <select id="fr" aria-label="Filter by Build Room"></select>
+    <select id="fs" aria-label="Filter by stage"></select>
+  </div>
+  <div class="tw"><table>
+    <thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Country</th><th>Profile</th><th>Build Room</th><th>Stage</th><th>Registered</th></tr></thead>
+    <tbody id="tb"></tbody>
+  </table></div>
+  <p class="hint" id="empty" style="margin-top:16px" hidden>No registrations match these filters.</p>
+</div>
+
+<dialog id="dg"><div id="dgc"></div>
+  <div style="display:flex;gap:10px;margin-top:8px"><button class="btn ghost" id="dc">Close</button><button class="btn" id="dd" style="background:#c0392b">Delete registration</button></div>
+</dialog>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="js/config.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
