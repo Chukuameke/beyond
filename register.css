@@ -510,9 +510,76 @@ input[type="tel"]:focus {
 .reg-success .btn-next {
     margin-left: 0;
 }
+
 /* ---------- REQUIRED QUESTIONS ---------- */
 .field .lbl b { color: var(--purple); }
 .q-error { margin-top: 10px; color: #b3261e; font-size: clamp(.82rem, 1.2vw, .95rem); font-weight: 600; }
+
+/* ---------- WHATSAPP POPUP ---------- */
+.wa-modal {
+    border: 0;
+    border-radius: 12px;
+    padding: clamp(28px, 5vw, 44px);
+    width: min(460px, calc(100% - 32px));
+    text-align: center;
+    color: var(--ink);
+    margin: auto;
+}
+
+.wa-modal::backdrop {
+    background: rgba(46, 8, 57, .72);
+}
+
+.wa-modal[open] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    animation: regFade .3s ease;
+}
+
+.wa-kicker {
+    color: var(--purple);
+    font-size: .75rem;
+    font-weight: 800;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+}
+
+.wa-modal h2 {
+    font-size: clamp(1.3rem, 3.6vw, 1.8rem);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -.01em;
+}
+
+.wa-modal h2 span {
+    color: var(--purple);
+}
+
+.wa-text {
+    color: var(--muted);
+    font-size: .95rem;
+}
+
+.wa-modal .btn-next {
+    margin-left: 0;
+    width: 100%;
+}
+
+.wa-close {
+    background: none;
+    border: 0;
+    font: inherit;
+    font-weight: 700;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 8px;
+}
+
+.wa-close:hover {
+    color: var(--purple);
+}
 
 /* =====================================================
      MEDIA QUERIES
@@ -549,7 +616,8 @@ input[type="tel"]:focus {
 
     .reg-marquee .track,
     .step,
-    .reg-success {
+    .reg-success,
+    .wa-modal[open] {
         animation: none;
     }
 }
