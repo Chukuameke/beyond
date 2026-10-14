@@ -7,10 +7,28 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="speakers.css">
+  <link rel="stylesheet" href="main.css">
 </head>
 <body>
 
 <!-- (add your navbar here) -->
+<header class="nav" id="nav">
+  <a href="#home" class="logo">
+    <img class="logo-white" src="./img/logo1.PNG" alt="Beyond the Idea">
+    <img class="logo-color" src="./img/logo.PNG" alt="Beyond the Idea">
+  </a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home" class="active">Home</a></li>
+    <li><a href="speakers.html">Speakers</a></li>
+
+    <!-- <li><a href="#agenda">Agenda</a></li> -->
+    <li><a href="sponsor.html">Sponsors</a></li>
+    <li><a href="#journey">Founder's epic</a></li>
+
+  </ul>
+  <a href="register.html" class="btn-register">Register / Sponsor</a>
+</header>
 
 <!-- ========== HERO (change the image in speakers.css: --hero-img) ========== -->
 <header class="spg-hero">
@@ -41,8 +59,8 @@
   <!-- Temporary photos, names and positions: replace each card with the real speaker -->
   <div class="spg-grid">
     <article class="spg-card">
-      <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Chidi Adeyemi" loading="lazy">
-      <div class="spg-info"><h3>Chidi Adeyemi</h3><p>Founder &amp; CEO</p></div>
+      <img src="./img/spk1.PNG" alt="Chidi Adeyemi" loading="lazy">
+      <div class="spg-info"><h3>Idika Precious</h3><p>Founder &amp; CEO Proactive Media</p></div>
     </article>
     <article class="spg-card">
       <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Amara Okoye" loading="lazy">
@@ -76,6 +94,8 @@
 </section>
 
 <!-- (add your footer here) -->
+<script src="main.js">
 
+</script>
 </body>
 </html>
