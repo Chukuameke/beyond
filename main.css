@@ -94,7 +94,10 @@ a {
   width: clamp(96px, 14vw, 150px);
   height: auto;
 }
-
+/* ===== NAV LOGO SWAP (white logo on the transparent bar, coloured logo once the bar turns white) ===== */
+.logo .logo-color { display: none; }
+.nav.scrolled .logo .logo-white { display: none; }
+.nav.scrolled .logo .logo-color { display: block; }
 .nav-links {
   display: flex;
   flex-wrap: nowrap;
@@ -958,7 +961,7 @@ footer {
 
 .footer-column h4 {
   margin: 0 0 4px;
-  color: #00d4ff;
+  color: var(--card-green);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 1.5px;
