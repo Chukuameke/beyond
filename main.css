@@ -1571,7 +1571,7 @@ footer {
 
   .spk-grid {
     grid-template-columns: minmax(0, 1fr);
-    width: clamp(260px, 80vw, 440px);
+    /* width: clamp(260px, 80vw, 440px); */
     margin-inline: auto;
   }
 }
