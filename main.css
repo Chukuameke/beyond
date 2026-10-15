@@ -722,6 +722,9 @@ footer {
   .acard span {
     font-size: clamp(.85rem, 3.4vw, 1.1rem);
   }
+  .hero{
+    min-height: 70vh !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1921,10 +1924,10 @@ footer {
   gap: clamp(8px, 1vw, 14px);
   min-height: 48px;
   padding: clamp(12px, 1.5vw, 18px) clamp(20px, 2.6vw, 34px);
-  border: 1px solid var(--purple);
+  border: 1px solid var(--green);
   border-radius: 6px;
   background: transparent;
-  color: var(--purple);
+  color:black;
   font-size: clamp(0.72rem, 1.2vw, 0.9rem);
   font-weight: 800;
   letter-spacing: 0.1em;
@@ -1933,14 +1936,21 @@ footer {
 }
 
 .sp-btn:hover {
-  background: var(--purple);
+  background: var(--green);
   color: var(--white);
   transform: translateY(-2px);
 }
 
 .sp-btn-primary {
-  background: var(--purple);
+  background: var(--green);
+  border: 0;
   color: var(--white);
+}
+.sp-btn-primary:hover{
+  background:transparent !important;
+  color:black !important;
+  border: 1px solid purple !important;
+  transform: translateY(-2px);
 }
 
 .sp-btn-primary:hover {
