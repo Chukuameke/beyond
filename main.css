@@ -652,14 +652,16 @@ footer {
   .menu-toggle {
     display: block;
   }
-
-  .btn-register-hide {
-    display: block;
-  }
-
   .btn-register {
     display: none;
   }
+  .btn-register-hide {
+    display: block !important;
+    text-align: center;
+    border-radius: 10px !important;
+  }
+
+
 
   .nav-links {
     position: absolute;
