@@ -152,7 +152,9 @@ a {
   font-size: 1.8rem;
   cursor: pointer;
 }
-
+.btn-register-hide{
+ display: none !important;
+}
 /* ---------- HERO ---------- */
 .hero {
   position: relative;
@@ -639,7 +641,10 @@ footer {
     display: block;
   }
 
-  .btn-register {
+  .btn-register-hide {
+    display:block;
+  }
+  .btn-register{
     display: none;
   }
 
