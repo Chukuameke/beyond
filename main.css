@@ -1797,7 +1797,7 @@ footer {
 /* logo card */
 .plogo {
   min-width: 0;
-  min-height: clamp(90px, 9vw, 120px);
+  min-height: clamp(100px, 19vw, 130px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1817,9 +1817,9 @@ footer {
 
 .plogo img {
   display: block;
-  width: min(130px, 80%);
-  height: clamp(38px, 4.5vw, 55px);
-  object-fit: contain;
+  width: 100%;                          /* every logo gets the same box width */
+  height: clamp(56px, 6.4vw, 80px);     /* and the same box height */
+  object-fit: contain;                  /* each logo fits inside that box without stretching */
 }
 
 /* buttons */
@@ -1893,8 +1893,8 @@ footer {
   }
 
   .plogo img {
-    width: min(110px, 82%);
-    height: 45px;
+    width: 100%;
+    height: 44px;
   }
 
   .sp-actions {
