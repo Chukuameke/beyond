@@ -90,21 +90,6 @@
 </section>
 
 <!-- (add your footer here) -->
-
-<script>
-  // if a temporary logo can't be loaded, show its name instead of a broken-image icon
-  function logoFallback(img) {
-    const s = document.createElement('span');
-    s.className = 'spn-name';
-    s.textContent = img.alt.toUpperCase();
-    img.replaceWith(s);
-  }
-  document.querySelectorAll('.spn-logo img').forEach(img => {
-    if (img.complete && img.naturalWidth === 0) logoFallback(img);
-    else img.addEventListener('error', () => logoFallback(img));
-  });
-</script>
-
 <footer class="sf">
   <div class="sf-top">
 
@@ -176,5 +161,20 @@
     © 2026 Beyond the Idea. All rights reserved. Organised by ComeCode Business
   </div>
 </footer>
+<script>
+  // if a temporary logo can't be loaded, show its name instead of a broken-image icon
+  function logoFallback(img) {
+    const s = document.createElement('span');
+    s.className = 'spn-name';
+    s.textContent = img.alt.toUpperCase();
+    img.replaceWith(s);
+  }
+  document.querySelectorAll('.spn-logo img').forEach(img => {
+    if (img.complete && img.naturalWidth === 0) logoFallback(img);
+    else img.addEventListener('error', () => logoFallback(img));
+  });
+</script>
+
+
 </body>
 </html>
