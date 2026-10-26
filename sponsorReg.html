@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Beyond the Idea 2026 | Sponsor Registration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="register.css">
+  <link rel="stylesheet" href="main.css">
+  <script defer src='main.js'></script>
+  <style>
+    textarea{width:100%;font:inherit;font-size:clamp(.92rem,1.4vw,1rem);color:var(--ink);min-height:180px;padding:clamp(14px,1.8vw,22px);background:#fff;border:1px solid var(--ink);border-radius:6px;resize:vertical;transition:border-color .2s,box-shadow .2s}
+    textarea:hover{border-color:var(--purple)}
+    textarea:focus{outline:none;border-color:var(--purple);box-shadow:0 0 0 4px rgba(91,15,110,.14)}
+    .count{align-self:flex-end;font-size:.78rem;color:var(--muted);font-weight:500}
+  </style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a href="index.html" class="logo">
+    Beyond<br>the Idea<br><small>Dec '26</small>
+  </a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#home" class="active">Home</a></li>
+    <li><a href="index.html#speakers">Speakers</a></li>
+    <li><a href="index.html#sponsors">Sponsors</a></li>
+    <li><a href="index.html#journey">Founder's epic</a></li>
+  </ul>
+  <a href="register.html" class="btn-register">Register / Sponsor</a>
+</header>
+
+<header class="reg-hero">
+  <div class="reg-hero-bg" aria-hidden="true"></div>
+  <div class="reg-hero-inner">
+    <p class="reg-date">DECEMBER 2026</p>
+    <h1>SPONSOR REGISTRATION</h1>
+    <p class="reg-sub">PARTNER WITH BEYOND THE IDEA</p>
+  </div>
+</header>
+
+<div class="reg-marquee" aria-hidden="true">
+  <div class="track">
+    <span>* Discover</span><span>* Learn</span><span>* Connect</span><span>* Build</span><span>* Grow</span><span>* Impact</span>
+    <span>* Discover</span><span>* Learn</span><span>* Connect</span><span>* Build</span><span>* Grow</span><span>* Impact</span>
+    <span>* Discover</span><span>* Learn</span><span>* Connect</span><span>* Build</span><span>* Grow</span><span>* Impact</span>
+    <span>* Discover</span><span>* Learn</span><span>* Connect</span><span>* Build</span><span>* Grow</span><span>* Impact</span>
+  </div>
+</div>
+
+<main class="reg">
+
+  <form class="reg-form" id="sponsorForm" action="#" method="post" novalidate>
+    <fieldset class="step">
+      <h2 class="step-title">Tell us about your company</h2>
+      <div class="grid">
+        <div class="field full">
+          <label for="company">Company Name <b>*</b></label>
+          <input id="company" name="company_name" type="text" required autocomplete="organization">
+        </div>
+        <div class="field">
+          <label for="cemail">Company Email <b>*</b></label>
+          <input id="cemail" name="company_email" type="email" required autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="cphone">Phone Number <b>*</b></label>
+          <input id="cphone" name="phone" type="tel" required autocomplete="tel">
+        </div>
+        <div class="field full">
+          <label for="proposal">Partnership Proposal <b>*</b></label>
+          <small>Tell us how you'd like to partner with Beyond the Idea.</small>
+          <textarea id="proposal" name="proposal" maxlength="2000" required></textarea>
+          <span class="count" id="count">0 / 2000</span>
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="reg-actions">
+      <button type="submit" class="btn btn-next" id="btnSubmit">Submit <span aria-hidden="true">&rarr;</span></button>
+    </div>
+    <p class="reg-error" id="regError" role="alert" hidden>Something went wrong. Please try again.</p>
+  </form>
+
+  <section class="reg-success" id="success" hidden>
+    <div class="reg-tick"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+    <h2>Proposal Received</h2>
+    <p>Thank you for your interest in partnering with Beyond the Idea. Our team will review your proposal and get back to you by email.</p>
+    <a class="btn btn-next" href="index.html">Back to Home <span aria-hidden="true">&rarr;</span></a>
+  </section>
+</main>
+
+<script>
+  /* ===== SETTINGS: fill these in ===== */
+  const SUPABASE_URL      = 'https://YOUR-PROJECT.supabase.co';
+  const SUPABASE_ANON_KEY = 'YOUR-ANON-PUBLIC-KEY';
+  const TABLE             = 'sponsors';
+
+  const form = document.getElementById('sponsorForm');
+  const btn = document.getElementById('btnSubmit');
+  const errBox = document.getElementById('regError');
+  const proposal = document.getElementById('proposal');
+  let sending = false;
+
+  proposal.addEventListener('input', () => {
+    document.getElementById('count').textContent = proposal.value.length + ' / 2000';
+  });
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (sending) return;
+
+    // validate each field in order and stop at the first problem
+    for (const el of form.querySelectorAll('input, textarea')) {
+      el.value = el.value.trim();
+      if (!el.checkValidity()) { el.reportValidity(); return; }
+    }
+
+    sending = true; errBox.hidden = true;
+    btn.disabled = true; btn.firstChild.textContent = 'Sending... ';
+
+    const data = {
+      company_name: form.company_name.value,
+      company_email: form.company_email.value.toLowerCase(),
+      phone: form.phone.value,
+      proposal: form.proposal.value
+    };
+
+    try {
+      const res = await fetch(SUPABASE_URL + '/rest/v1/' + TABLE, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify(data)
+      });
+      if (!res.ok) throw new Error('Request failed: ' + res.status);
+
+      form.hidden = true;
+      const ok = document.getElementById('success');
+      ok.hidden = false;
+      ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } catch (err) {
+      console.error(err);
+      errBox.hidden = false;
+      btn.disabled = false; btn.firstChild.textContent = 'Submit ';
+    }
+    sending = false;
+  });
+</script>
+
+</body>
+</html>
