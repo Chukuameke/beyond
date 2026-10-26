@@ -28,7 +28,8 @@ select option{background:#000}
 
 /* dashboard */
 .adm{max-width:1280px;margin:auto;padding:28px 24px 80px}
-.bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:28px}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.tabs{display:flex;gap:8px;margin-bottom:28px}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px;margin-bottom:28px}
 .kpi{background:var(--card);padding:22px}
 .kpi b{font:800 44px 'Inter';display:block}
@@ -38,18 +39,23 @@ select option{background:#000}
 .tools{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px}
 .tools>*{flex:1;min-width:170px}
 .tw{overflow-x:auto;background:var(--card)}
-table{width:100%;border-collapse:collapse;font-size:13px;min-width:860px}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:760px}
 th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);white-space:nowrap}
 th{color:var(--mut)}
 tbody tr{cursor:pointer}
 tbody tr:hover{background:#ffffff0a}
+.cap{text-transform:capitalize}
 
 /* detail popup */
-dialog{background:var(--card);color:#fff;border:1px solid var(--line);padding:28px;max-width:560px;width:calc(100% - 32px);margin:auto}
+dialog{background:var(--card);color:#fff;border:1px solid var(--line);padding:28px;max-width:600px;width:calc(100% - 32px);margin:auto}
 dialog::backdrop{background:#000a}
 dl{display:grid;grid-template-columns:140px 1fr;gap:10px 14px;margin:18px 0;font-size:13px}
 dt{color:var(--mut)}
 dd{margin:0;word-break:break-word}
+dd.pre{white-space:pre-wrap;font-weight:400}
+dd a{color:#fff}
+.stat{display:flex;gap:10px;margin:6px 0 18px}
+.stat select{flex:1}
 </style>
 </head>
 <body>
@@ -63,33 +69,65 @@ dd{margin:0;word-break:break-word}
 
 <div class="adm" id="app" hidden>
   <div class="bar">
-    <h1 style="font-size:36px">Registrations</h1>
+    <h1 style="font-size:36px" id="title">Registrations</h1>
     <div><button class="btn ghost" id="csv">Export CSV</button> <button class="btn ghost" id="out">Sign out</button></div>
   </div>
-  <div class="cards">
-    <div class="kpi"><b id="k1">0</b><span>Total registrations</span></div>
-    <div class="kpi"><b id="k2">0</b><span>Registered today</span></div>
-    <div class="kpi"><b id="k3">0</b><span>Countries</span></div>
-    <div class="kpi" style="grid-column:span 2;min-width:300px"><span>By Build Room</span><div id="rb"></div></div>
+  <div class="tabs">
+    <button class="btn" id="tabReg">Registrations</button>
+    <button class="btn ghost" id="tabSp">Sponsors</button>
   </div>
-  <div class="tools">
-    <input type="search" id="q" placeholder="Search name, email, business" aria-label="Search">
-    <select id="fr" aria-label="Filter by Build Room"></select>
-    <select id="fs" aria-label="Filter by stage"></select>
+
+  <!-- ===== REGISTRATIONS ===== -->
+  <div id="viewReg">
+    <div class="cards">
+      <div class="kpi"><b id="k1">0</b><span>Total registrations</span></div>
+      <div class="kpi"><b id="k2">0</b><span>Registered today</span></div>
+      <div class="kpi"><b id="k3">0</b><span>Countries</span></div>
+      <div class="kpi" style="grid-column:span 2;min-width:300px"><span>By Build Room</span><div id="rb"></div></div>
+    </div>
+    <div class="tools">
+      <input type="search" id="q" placeholder="Search name, email, business" aria-label="Search">
+      <select id="fr" aria-label="Filter by Build Room"></select>
+      <select id="fs" aria-label="Filter by stage"></select>
+    </div>
+    <div class="tw"><table>
+      <thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Country</th><th>Profile</th><th>Build Room</th><th>Stage</th><th>Registered</th></tr></thead>
+      <tbody id="tb"></tbody>
+    </table></div>
+    <p class="hint" id="empty" style="margin-top:16px" hidden>No registrations match these filters.</p>
   </div>
-  <div class="tw"><table>
-    <thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Country</th><th>Profile</th><th>Build Room</th><th>Stage</th><th>Registered</th></tr></thead>
-    <tbody id="tb"></tbody>
-  </table></div>
-  <p class="hint" id="empty" style="margin-top:16px" hidden>No registrations match these filters.</p>
+
+  <!-- ===== SPONSORS ===== -->
+  <div id="viewSp" hidden>
+    <div class="cards">
+      <div class="kpi"><b id="s1">0</b><span>Total applications</span></div>
+      <div class="kpi"><b id="s2">0</b><span>New (not yet reviewed)</span></div>
+      <div class="kpi"><b id="s3">0</b><span>Accepted</span></div>
+    </div>
+    <div class="tools">
+      <input type="search" id="sq" placeholder="Search company, email, proposal" aria-label="Search sponsors">
+      <select id="sf" aria-label="Filter by status">
+        <option value="">All statuses</option>
+        <option value="new">New</option>
+        <option value="contacted">Contacted</option>
+        <option value="accepted">Accepted</option>
+        <option value="declined">Declined</option>
+      </select>
+    </div>
+    <div class="tw"><table>
+      <thead><tr><th>Company</th><th>Email</th><th>Phone</th><th>Status</th><th>Received</th></tr></thead>
+      <tbody id="stb"></tbody>
+    </table></div>
+    <p class="hint" id="sempty" style="margin-top:16px" hidden>No sponsor applications match these filters.</p>
+  </div>
 </div>
 
 <dialog id="dg"><div id="dgc"></div>
-  <div style="display:flex;gap:10px;margin-top:8px"><button class="btn ghost" id="dc">Close</button><button class="btn" id="dd" style="background:#c0392b">Delete registration</button></div>
+  <div style="display:flex;gap:10px;margin-top:8px"><button class="btn ghost" id="dc">Close</button><button class="btn" id="dd" style="background:#c0392b;border-color:#c0392b">Delete</button></div>
 </dialog>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
-
+<script src="config.js"></script>
 <script src="admin.js"></script>
 </body>
 </html>
