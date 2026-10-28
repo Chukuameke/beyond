@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
 
 :root {
@@ -10,6 +9,10 @@
   --green: #38ad19;
   --blue: #08a9ed;
   --white: #fff;
+  --gutter: clamp(14px, 4vw, 56px);
+  /* same side spacing as the navbar */
+  --hero-img: url("./img/stage.png");
+  /* hero background photo */
 }
 
 * {
@@ -33,130 +36,83 @@ a {
 }
 
 /* =========================
-   HERO SECTION
+   HERO (same as the other pages)
 ========================= */
-
-.agenda-hero {
+.agd-hero {
   position: relative;
-  min-height: 560px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  color: var(--white);
   isolation: isolate;
-
-  background:
-    /* linear-gradient(
-      100deg,
-      rgba(20, 4, 32, 0.88),
-      rgba(18, 10, 31, 0.62) 54%,
-      rgba(7, 37, 32, 0.58)
-    ), */
-    url('./img/stage.png') center 48% / cover no-repeat
-   
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: #fff;
+  font-family: "Inter", system-ui, sans-serif;
+  min-height: clamp(300px, 40vw, 480px);
+  /* top space keeps the title clear of the fixed navbar */
+  padding: calc(var(--nav-h, 88px) + clamp(24px, 4vw, 56px)) var(--gutter) clamp(48px, 7vw, 90px);
+  background: linear-gradient(160deg, #7a1a8f, #5b0f6e 45%, #2e0839);
 }
 
-.agenda-hero::before {
+.agd-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--hero-img) center / cover no-repeat;
+}
+
+.agd-hero-bg::after {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: -1;
-  background: radial-gradient(
-    ellipse at 50% 35%,
-    rgba(89, 0, 110, 0.24),
-    transparent 55%
-  );
+  background: linear-gradient(180deg, rgba(46, 8, 57, .55), rgba(46, 8, 57, .82));
 }
 
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    0deg,
-    rgba(108, 4, 160, 0.839),
-    transparent 45%
-  );
-  z-index: -1;
+.agd-hero h1 {
+  font-size: clamp(2rem, 6.4vw, 5rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -.02em;
+  text-wrap: balance;
 }
 
-.hero-content {
-  width: min(1100px, 92%);
-  padding: 80px 0 100px;
-  text-align: center;
-}
-
-.hero-kicker {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 4px;
+.agd-sub {
+  margin-top: clamp(12px, 2vw, 22px);
+  font-size: clamp(.68rem, 1.2vw, .9rem);
   font-weight: 700;
-  font-size: 16px;
+  letter-spacing: .12em;
 }
 
-.date-pill {
-  background: var(--green);
-  border-radius: 4px;
-  padding: 5px 10px;
-  font-size: 13px;
-  letter-spacing: 0.02em;
-}
-
-.hero-content h1 {
-  margin: 0;
-  font-family: 'Manrope', sans-serif;
-  font-size: clamp(3.2rem, 8.2vw, 5.8rem);
-  line-height: 0.98;
-  font-weight: 800;
-  letter-spacing: -0.065em;
-}
-
-.hero-subtitle {
-  margin: 25px 0 0;
-  font-size: 14px;
-  font-weight: 800;
-  letter-spacing: 0.13em;
-}
-
-.hero-description {
-  max-width: 650px;
-  margin: 22px auto 0;
-  color: rgba(255, 255, 255, 0.82);
-  line-height: 1.8;
-  font-size: 16px;
-}
-
-/* Purple scrolling-values strip */
-
-.hero-bottom-line {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: space-around;
-  gap: 34px;
+/* scrolling strip */
+.agd-marquee {
+  background: #5b0f6e;
+  color: #fff;
   overflow: hidden;
   white-space: nowrap;
-  padding: 20px 4%;
-  color: white;
-  background: var(--purple);
-  font-size: clamp(16px, 2vw, 24px);
-  font-style: italic;
-  font-weight: 700;
+  padding: clamp(12px, 1.6vw, 18px) 0;
+  font-family: "Inter", system-ui, sans-serif;
 }
 
-.hero-bottom-line span::before {
-  content: '* ';
-  color: #d5b9e2;
+.agd-marquee .track {
+  display: inline-flex;
+  width: max-content;
+  animation: agdScroll 30s linear infinite;
+}
+
+.agd-marquee span {
+  font-size: clamp(1rem, 2vw, 1.6rem);
+  font-style: italic;
+  padding: 0 clamp(24px, 4vw, 56px);
+}
+
+@keyframes agdScroll {
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 /* =========================
    SHARED CONTAINERS
 ========================= */
-
 .section-wrap {
   width: min(1160px, 88%);
   margin: 0 auto;
@@ -183,7 +139,6 @@ a {
 /* =========================
    AGENDA INTRODUCTION
 ========================= */
-
 .agenda-intro {
   padding: 92px 0 58px;
 }
@@ -211,6 +166,10 @@ a {
   color: var(--muted);
   font-size: 17px;
   line-height: 1.8;
+}
+
+.intro-copy+.intro-copy {
+  margin-top: -12px;
 }
 
 .event-meta {
@@ -242,7 +201,6 @@ a {
 /* =========================
    DAILY AGENDA CARDS
 ========================= */
-
 .days-section {
   padding-bottom: 100px;
 }
@@ -341,7 +299,6 @@ a {
 /* =========================
    TIMELINE
 ========================= */
-
 .timeline {
   border-top: 1px solid #eee8f1;
 }
@@ -384,7 +341,6 @@ a {
 /* =========================
    BREAKOUT ROOMS
 ========================= */
-
 .breakout-label {
   display: flex;
   align-items: center;
@@ -396,7 +352,7 @@ a {
   letter-spacing: 0.14em;
 }
 
-.breakout-label > span:last-child {
+.breakout-label>span:last-child {
   color: var(--muted);
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -486,7 +442,6 @@ a {
 /* =========================
    CLOSING CALL TO ACTION
 ========================= */
-
 .closing-cta {
   padding: 85px 6%;
   color: white;
@@ -514,7 +469,7 @@ a {
   color: #65d948;
 }
 
-.cta-inner > p:not(.eyebrow) {
+.cta-inner>p:not(.eyebrow) {
   color: #d2c5d9;
   margin: 23px 0 30px;
 }
@@ -545,7 +500,6 @@ a {
 /* =========================
    FOOTER
 ========================= */
-
 .agenda-footer {
   display: flex;
   justify-content: space-between;
@@ -561,30 +515,7 @@ a {
 /* =========================
    TABLET RESPONSIVENESS
 ========================= */
-
 @media (max-width: 760px) {
-  .agenda-hero {
-    min-height: 510px;
-  }
-
-  .hero-content {
-    padding: 65px 0 105px;
-  }
-
-  .hero-subtitle {
-    font-size: 11px;
-    line-height: 1.7;
-  }
-
-  .hero-description {
-    font-size: 14px;
-  }
-
-  .hero-bottom-line {
-    justify-content: flex-start;
-    gap: 28px;
-  }
-
   .agenda-intro {
     padding-top: 65px;
   }
@@ -621,14 +552,9 @@ a {
 /* =========================
    MOBILE RESPONSIVENESS
 ========================= */
-
 @media (max-width: 480px) {
   .section-wrap {
     width: 91%;
-  }
-
-  .hero-content h1 {
-    font-size: 3rem;
   }
 
   .day-card {
@@ -655,5 +581,15 @@ a {
   .timeline-item {
     grid-template-columns: 1fr;
     gap: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .agd-marquee .track {
+    animation: none;
   }
 }

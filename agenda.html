@@ -1,10 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Agenda | Beyond the Idea 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="agenda.css">
   <link rel="stylesheet" href="main.css">
 </head>
@@ -31,37 +32,26 @@
         </ul>
         <a href="register.html" class="btn-register">Register <span>→</span></a>
       </header>
-    <!-- HERO SECTION -->
-    <section class="agenda-hero">
-      <div class="hero-overlay"></div>
 
-      <div class="hero-content">
-        <div class="hero-kicker">
-          <span>Beyond the Idea</span>
-          <span class="date-pill">DEC ’26</span>
-        </div>
-
+    <!-- HERO (id="home" lets main.js turn the navbar white after the hero) -->
+    <header class="agd-hero" id="home">
+      <div class="agd-hero-bg" aria-hidden="true"></div>
+      <div class="agd-hero-inner">
+        <p class="hero-beyond-the-idea">Beyond the Idea <small>Dec '26</small></p>
         <h1>THE AGENDA</h1>
-        <p class="hero-subtitle">
-          THREE DAYS. BOLD IDEAS. REAL-WORLD IMPACT.
-        </p>
-
-        <p class="hero-description">
-          Explore the sessions, conversations, and connections designed
-          to help you discover opportunities, build with purpose, and
-          turn ideas into impact.
-        </p>
+        <p class="agd-sub">THREE DAYS. BOLD IDEAS. REAL-WORLD IMPACT.</p>
       </div>
+    </header>
 
-      <div class="hero-bottom-line" aria-hidden="true">
-        <span>Discover</span>
-        <span>Learn</span>
-        <span>Connect</span>
-        <span>Build</span>
-        <span>Grow</span>
-        <span>Impact</span>
+    <!-- scrolling strip -->
+    <div class="agd-marquee" aria-hidden="true">
+      <div class="track">
+        <span>* Discover</span><span>* Learn</span><span>* Connect</span><span>* Build</span><span>* Grow</span><span>* Impact</span>
+        <span>* Discover</span><span>* Learn</span><span>* Connect</span><span>* Build</span><span>* Grow</span><span>* Impact</span>
+        <span>* Discover</span><span>* Learn</span><span>* Connect</span><span>* Build</span><span>* Grow</span><span>* Impact</span>
+        <span>* Discover</span><span>* Learn</span><span>* Connect</span><span>* Build</span><span>* Grow</span><span>* Impact</span>
       </div>
-    </section>
+    </div>
 
     <!-- INTRODUCTION -->
     <section class="agenda-intro section-wrap">
@@ -75,6 +65,12 @@
         From discovering what your idea can become to building a stronger
         business and connecting with people who can help you grow,
         each day has a purpose.
+      </p>
+
+      <p class="intro-copy">
+        Explore the sessions, conversations, and connections designed
+        to help you discover opportunities, build with purpose, and
+        turn ideas into impact.
       </p>
 
       <div class="event-meta">
