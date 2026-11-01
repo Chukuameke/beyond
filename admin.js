@@ -162,3 +162,50 @@ $('#csv').onclick = () => {
 };
 
 gate();
+
+
+/* ===== Sponsor logos: trim the empty margins so every logo fills the same box ===== */
+(function () {
+  function trim(img) {
+    if (img.dataset.trimmed) return;
+    img.dataset.trimmed = '1';
+    try {
+      const w = img.naturalWidth, h = img.naturalHeight;
+      if (!w || !h) return;
+      const k = Math.min(1, 800 / Math.max(w, h));
+      const cw = Math.round(w * k), ch = Math.round(h * k);
+      const c = document.createElement('canvas');
+      c.width = cw; c.height = ch;
+      const ctx = c.getContext('2d', { willReadFrequently: true });
+      ctx.drawImage(img, 0, 0, cw, ch);
+      const d = ctx.getImageData(0, 0, cw, ch).data;
+      let x0 = cw, y0 = ch, x1 = -1, y1 = -1;
+      for (let y = 0; y < ch; y++) {
+        for (let x = 0; x < cw; x++) {
+          const i = (y * cw + x) * 4;
+          const white = d[i] > 240 && d[i + 1] > 240 && d[i + 2] > 240;
+          if (d[i + 3] > 20 && !white) {            // a visible, non-white pixel = part of the logo
+            if (x < x0) x0 = x; if (x > x1) x1 = x;
+            if (y < y0) y0 = y; if (y > y1) y1 = y;
+          }
+        }
+      }
+      if (x1 < 0) return;
+      const pad = 2;
+      x0 = Math.max(0, x0 - pad); y0 = Math.max(0, y0 - pad);
+      x1 = Math.min(cw - 1, x1 + pad); y1 = Math.min(ch - 1, y1 + pad);
+      const out = document.createElement('canvas');
+      out.width = x1 - x0 + 1; out.height = y1 - y0 + 1;
+      out.getContext('2d').drawImage(c, x0, y0, out.width, out.height, 0, 0, out.width, out.height);
+      img.src = out.toDataURL('image/png');
+    } catch (err) { /* if the browser blocks it, the logo is simply left as it is */ }
+  }
+  function run() {
+    document.querySelectorAll('.plogo img, .spn-logo img').forEach(img => {
+      if (img.complete) trim(img);
+      else img.addEventListener('load', () => trim(img), { once: true });
+    });
+  }
+  if (document.readyState === 'complete') run();
+  else window.addEventListener('load', run);
+})();

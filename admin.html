@@ -1,133 +1,368 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex">
-<title>Admin — Beyond the Idea 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800&family=Courier+Prime:wght@400;700&family=Syne:wght@800&family=Orbitron:wght@800&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#05040a;--card:#0e0e14;--blue:#1929d6;--mut:#8a8a93;--line:#ffffff26}
-*{box-sizing:border-box;margin:0}
-body{background:var(--bg);color:#fff;font:700 14px/1.5 'Courier Prime','Courier New',monospace}
-h1{font-family:'Inter',system-ui,sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:-.03em;line-height:1}
-[hidden]{display:none!important}
-:focus-visible{outline:2px solid #fff;outline-offset:3px}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Admin — Beyond the Idea 2026</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800&family=Courier+Prime:wght@400;700&family=Syne:wght@800&family=Orbitron:wght@800&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #05040a;
+      --card: #0e0e14;
+      --blue: #1929d6;
+      --mut: #8a8a93;
+      --line: #ffffff26
+    }
 
-/* buttons + inputs */
-.btn{display:inline-block;border:1px solid #fff;background:#fff;color:#000;padding:11px 22px;font:800 13px 'Inter',sans-serif;text-transform:uppercase;cursor:pointer}
-.btn.ghost{background:none;color:#fff}
-.btn.ghost:hover{background:#fff;color:#000}
-input[type=email],input[type=password],input[type=search],select{width:100%;background:#000;border:1px solid #ffffff55;color:#fff;padding:13px 14px;font:700 14px 'Courier Prime',monospace}
-select option{background:#000}
-.msg{color:#ff8f78;min-height:20px}
-.hint{color:var(--mut);font-weight:400}
+    * {
+      box-sizing: border-box;
+      margin: 0
+    }
 
-/* login */
-.login{max-width:380px;margin:18vh auto;padding:0 24px;display:grid;gap:14px}
+    body {
+      background: var(--bg);
+      color: #fff;
+      font: 700 14px/1.5 'Courier Prime', 'Courier New', monospace
+    }
 
-/* dashboard */
-.adm{max-width:1280px;margin:auto;padding:28px 24px 80px}
-.bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:20px}
-.tabs{display:flex;gap:8px;margin-bottom:28px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px;margin-bottom:28px}
-.kpi{background:var(--card);padding:22px}
-.kpi b{font:800 44px 'Inter';display:block}
-.kpi span{color:var(--mut);font-size:13px}
-.rb{display:grid;grid-template-columns:150px 1fr 34px;gap:10px;align-items:center;font-size:12px;margin-top:8px}
-.rb i{display:block;height:8px;background:var(--blue)}
-.tools{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px}
-.tools>*{flex:1;min-width:170px}
-.tw{overflow-x:auto;background:var(--card)}
-table{width:100%;border-collapse:collapse;font-size:13px;min-width:760px}
-th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);white-space:nowrap}
-th{color:var(--mut)}
-tbody tr{cursor:pointer}
-tbody tr:hover{background:#ffffff0a}
-.cap{text-transform:capitalize}
+    h1 {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -.03em;
+      line-height: 1
+    }
 
-/* detail popup */
-dialog{background:var(--card);color:#fff;border:1px solid var(--line);padding:28px;max-width:600px;width:calc(100% - 32px);margin:auto}
-dialog::backdrop{background:#000a}
-dl{display:grid;grid-template-columns:140px 1fr;gap:10px 14px;margin:18px 0;font-size:13px}
-dt{color:var(--mut)}
-dd{margin:0;word-break:break-word}
-dd.pre{white-space:pre-wrap;font-weight:400}
-dd a{color:#fff}
-.stat{display:flex;gap:10px;margin:6px 0 18px}
-.stat select{flex:1}
-</style>
+    [hidden] {
+      display: none !important
+    }
+
+    :focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 3px
+    }
+
+    /* buttons + inputs */
+    .btn {
+      display: inline-block;
+      border: 1px solid #fff;
+      background: #fff;
+      color: #000;
+      padding: 11px 22px;
+      font: 800 13px 'Inter', sans-serif;
+      text-transform: uppercase;
+      cursor: pointer
+    }
+
+    .btn.ghost {
+      background: none;
+      color: #fff
+    }
+
+    .btn.ghost:hover {
+      background: #fff;
+      color: #000
+    }
+
+    input[type=email],
+    input[type=password],
+    input[type=search],
+    select {
+      width: 100%;
+      background: #000;
+      border: 1px solid #ffffff55;
+      color: #fff;
+      padding: 13px 14px;
+      font: 700 14px 'Courier Prime', monospace
+    }
+
+    select option {
+      background: #000
+    }
+
+    .msg {
+      color: #ff8f78;
+      min-height: 20px
+    }
+
+    .hint {
+      color: var(--mut);
+      font-weight: 400
+    }
+
+    /* login */
+    .login {
+      max-width: 380px;
+      margin: 18vh auto;
+      padding: 0 24px;
+      display: grid;
+      gap: 14px
+    }
+
+    /* dashboard */
+    .adm {
+      max-width: 1280px;
+      margin: auto;
+      padding: 28px 24px 80px
+    }
+
+    .bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 20px
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 28px
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 6px;
+      margin-bottom: 28px
+    }
+
+    .kpi {
+      background: var(--card);
+      padding: 22px
+    }
+
+    .kpi b {
+      font: 800 44px 'Inter';
+      display: block
+    }
+
+    .kpi span {
+      color: var(--mut);
+      font-size: 13px
+    }
+
+    .rb {
+      display: grid;
+      grid-template-columns: 150px 1fr 34px;
+      gap: 10px;
+      align-items: center;
+      font-size: 12px;
+      margin-top: 8px
+    }
+
+    .rb i {
+      display: block;
+      height: 8px;
+      background: var(--blue)
+    }
+
+    .tools {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 16px
+    }
+
+    .tools>* {
+      flex: 1;
+      min-width: 170px
+    }
+
+    .tw {
+      overflow-x: auto;
+      background: var(--card)
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      min-width: 760px
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--line);
+      white-space: nowrap
+    }
+
+    th {
+      color: var(--mut)
+    }
+
+    tbody tr {
+      cursor: pointer
+    }
+
+    tbody tr:hover {
+      background: #ffffff0a
+    }
+
+    .cap {
+      text-transform: capitalize
+    }
+
+    /* detail popup */
+    dialog {
+      background: var(--card);
+      color: #fff;
+      border: 1px solid var(--line);
+      padding: 28px;
+      max-width: 600px;
+      width: calc(100% - 32px);
+      margin: auto
+    }
+
+    dialog::backdrop {
+      background: #000a
+    }
+
+    dl {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 10px 14px;
+      margin: 18px 0;
+      font-size: 13px
+    }
+
+    dt {
+      color: var(--mut)
+    }
+
+    dd {
+      margin: 0;
+      word-break: break-word
+    }
+
+    dd.pre {
+      white-space: pre-wrap;
+      font-weight: 400
+    }
+
+    dd a {
+      color: #fff
+    }
+
+    .stat {
+      display: flex;
+      gap: 10px;
+      margin: 6px 0 18px
+    }
+
+    .stat select {
+      flex: 1
+    }
+  </style>
 </head>
+
 <body>
-<form class="login" id="login">
-  <h1 style="font-size:40px">Admin sign in</h1>
-  <input type="email" id="em" placeholder="Email" required autocomplete="username" aria-label="Email">
-  <input type="password" id="pw" placeholder="Password" required autocomplete="current-password" aria-label="Password">
-  <button class="btn" type="submit">Sign in</button>
-  <p class="msg" id="lm" role="alert"></p>
-</form>
+  <form class="login" id="login">
+    <h1 style="font-size:40px">Admin sign in</h1>
+    <input type="email" id="em" placeholder="Email" required autocomplete="username" aria-label="Email">
+    <input type="password" id="pw" placeholder="Password" required autocomplete="current-password"
+      aria-label="Password">
+    <button class="btn" type="submit">Sign in</button>
+    <p class="msg" id="lm" role="alert"></p>
+  </form>
 
-<div class="adm" id="app" hidden>
-  <div class="bar">
-    <h1 style="font-size:36px" id="title">Registrations</h1>
-    <div><button class="btn ghost" id="csv">Export CSV</button> <button class="btn ghost" id="out">Sign out</button></div>
-  </div>
-  <div class="tabs">
-    <button class="btn" id="tabReg">Registrations</button>
-    <button class="btn ghost" id="tabSp">Sponsors</button>
-  </div>
-
-  <!-- ===== REGISTRATIONS ===== -->
-  <div id="viewReg">
-    <div class="cards">
-      <div class="kpi"><b id="k1">0</b><span>Total registrations</span></div>
-      <div class="kpi"><b id="k2">0</b><span>Registered today</span></div>
-      <div class="kpi"><b id="k3">0</b><span>Countries</span></div>
-      <div class="kpi" style="grid-column:span 2;min-width:300px"><span>By Build Room</span><div id="rb"></div></div>
+  <div class="adm" id="app" hidden>
+    <div class="bar">
+      <h1 style="font-size:36px" id="title">Registrations</h1>
+      <div><button class="btn ghost" id="csv">Export CSV</button> <button class="btn ghost" id="out">Sign out</button>
+      </div>
     </div>
-    <div class="tools">
-      <input type="search" id="q" placeholder="Search name, email, business" aria-label="Search">
-      <select id="fr" aria-label="Filter by Build Room"></select>
-      <select id="fs" aria-label="Filter by stage"></select>
+    <div class="tabs">
+      <button class="btn" id="tabReg">Registrations</button>
+      <button class="btn ghost" id="tabSp">Sponsors</button>
     </div>
-    <div class="tw"><table>
-      <thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Country</th><th>Profile</th><th>Build Room</th><th>Stage</th><th>Registered</th></tr></thead>
-      <tbody id="tb"></tbody>
-    </table></div>
-    <p class="hint" id="empty" style="margin-top:16px" hidden>No registrations match these filters.</p>
+
+    <!-- ===== REGISTRATIONS ===== -->
+    <div id="viewReg">
+      <div class="cards">
+        <div class="kpi"><b id="k1">0</b><span>Total registrations</span></div>
+        <div class="kpi"><b id="k2">0</b><span>Registered today</span></div>
+        <div class="kpi"><b id="k3">0</b><span>Countries</span></div>
+        <div class="kpi" style="grid-column:span 2;min-width:300px"><span>By Build Room</span>
+          <div id="rb"></div>
+        </div>
+      </div>
+      <div class="tools">
+        <input type="search" id="q" placeholder="Search name, email, business" aria-label="Search">
+        <select id="fr" aria-label="Filter by Build Room"></select>
+        <select id="fs" aria-label="Filter by stage"></select>
+      </div>
+      <div class="tw">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Country</th>
+              <th>Profile</th>
+              <th>Build Room</th>
+              <th>Stage</th>
+              <th>Registered</th>
+            </tr>
+          </thead>
+          <tbody id="tb"></tbody>
+        </table>
+      </div>
+      <p class="hint" id="empty" style="margin-top:16px" hidden>No registrations match these filters.</p>
+    </div>
+
+    <!-- ===== SPONSORS ===== -->
+    <div id="viewSp" hidden>
+      <div class="cards">
+        <div class="kpi"><b id="s1">0</b><span>Total applications</span></div>
+        <div class="kpi"><b id="s2">0</b><span>New (not yet reviewed)</span></div>
+        <div class="kpi"><b id="s3">0</b><span>Accepted</span></div>
+      </div>
+      <div class="tools">
+        <input type="search" id="sq" placeholder="Search company, email, proposal" aria-label="Search sponsors">
+        <select id="sf" aria-label="Filter by status">
+          <option value="">All statuses</option>
+          <option value="new">New</option>
+          <option value="contacted">Contacted</option>
+          <option value="accepted">Accepted</option>
+          <option value="declined">Declined</option>
+        </select>
+      </div>
+      <div class="tw">
+        <table>
+          <thead>
+            <tr>
+              <th>Company</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Status</th>
+              <th>Received</th>
+            </tr>
+          </thead>
+          <tbody id="stb"></tbody>
+        </table>
+      </div>
+      <p class="hint" id="sempty" style="margin-top:16px" hidden>No sponsor applications match these filters.</p>
+    </div>
   </div>
 
-  <!-- ===== SPONSORS ===== -->
-  <div id="viewSp" hidden>
-    <div class="cards">
-      <div class="kpi"><b id="s1">0</b><span>Total applications</span></div>
-      <div class="kpi"><b id="s2">0</b><span>New (not yet reviewed)</span></div>
-      <div class="kpi"><b id="s3">0</b><span>Accepted</span></div>
-    </div>
-    <div class="tools">
-      <input type="search" id="sq" placeholder="Search company, email, proposal" aria-label="Search sponsors">
-      <select id="sf" aria-label="Filter by status">
-        <option value="">All statuses</option>
-        <option value="new">New</option>
-        <option value="contacted">Contacted</option>
-        <option value="accepted">Accepted</option>
-        <option value="declined">Declined</option>
-      </select>
-    </div>
-    <div class="tw"><table>
-      <thead><tr><th>Company</th><th>Email</th><th>Phone</th><th>Status</th><th>Received</th></tr></thead>
-      <tbody id="stb"></tbody>
-    </table></div>
-    <p class="hint" id="sempty" style="margin-top:16px" hidden>No sponsor applications match these filters.</p>
-  </div>
-</div>
+  <dialog id="dg">
+    <div id="dgc"></div>
+    <div style="display:flex;gap:10px;margin-top:8px"><button class="btn ghost" id="dc">Close</button><button
+        class="btn" id="dd" style="background:#c0392b;border-color:#c0392b">Delete</button></div>
+  </dialog>
 
-<dialog id="dg"><div id="dgc"></div>
-  <div style="display:flex;gap:10px;margin-top:8px"><button class="btn ghost" id="dc">Close</button><button class="btn" id="dd" style="background:#c0392b;border-color:#c0392b">Delete</button></div>
-</dialog>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
-<script src="config.js"></script>
-<script src="admin.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="config.js"></script>
+  <script src="admin.js"></script>
 </body>
+
 </html>
